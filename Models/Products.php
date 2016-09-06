@@ -2,7 +2,7 @@
 	class Products
 	{
 
-		public function insertProducts($valProductName,$valProductPrice,$valImage,$valCategory,$valDetails)
+		public function insertProducts($valProductName,$valProductPrice,$valImage,$valCategory,$valDetails,$valUsersID)
 		{
 				ini_set('display_errors', 1);
 				ini_set('display_startup_errors', 1);
@@ -18,15 +18,15 @@
 
 				$conn = new mysqli($servername, $username, $password,$dbname);
 
-				$target_dir = "../images/uploads/";
-				$target_file = $target_dir . basename($_FILES["fileToUpload"]["name"]);
+				$target_dir = $_SERVER['DOCUMENT_ROOT'] ."/images/uploads/";
+				$target_file = $target_dir . basename($valImage["fileToUpload"]["name"]);
 				$uploadOk = 1;
 				$imageFileType = pathinfo($target_file,PATHINFO_EXTENSION);
 				// to lower
 				$imageFileType = strtolower($imageFileType);
 				// Check if image file is a actual image or fake image
 				if(isset($_POST["submit"])) {
-				    $check = getimagesize($_FILES["fileToUpload"]["tmp_name"]);
+				    $check = getimagesize($valImage["fileToUpload"]["tmp_name"]);
 				    if($check !== false) {
 				        echo "File is an image - " . $check["mime"] . ".";
 				        $uploadOk = 1;
@@ -41,7 +41,7 @@
 				    $uploadOk = 0;
 				}
 				// Check file size
-				if ($_FILES["fileToUpload"]["size"] > 500000) {
+				if ($valImage["fileToUpload"]["size"] > 500000) {
 				    echo "Sorry, your file is too large.";
 				    $uploadOk = 0;
 				}
@@ -56,11 +56,11 @@
 				    echo "Sorry, your file was not uploaded.";
 				// if everything is ok, try to upload file
 				} else {
-				    if (move_uploaded_file($_FILES["fileToUpload"]["tmp_name"], $target_file)) {
-				        $fileName = $_FILES["fileToUpload"]["name"];
-				        $sql="INSERT INTO `carousel` (Image,ProductName,Details) VALUES ('$fileName','$ProductName','$Details')";
+				    if (move_uploaded_file($valImage["fileToUpload"]["tmp_name"], $target_file)) {
+				        $fileName = $valImage["fileToUpload"]["name"];
+				        $sql="INSERT INTO `products` (Image,ProductName,Details,ProductPrice,Category,UsersID) VALUES ('$fileName','$valProductName','$valDetails','$valProductPrice','$valCategory',$valUsersID)";
 				        $conn->query($sql);
-				        echo "The file ". basename( $_FILES["fileToUpload"]["name"]). " has been uploaded.";
+				        echo "The file ". basename( $valImage["fileToUpload"]["name"]). " has been uploaded.";
 
 				    } else {
 				        echo "Sorry, there was an error uploading your file.";
@@ -107,6 +107,6 @@
 	}
 
 	$PRODUCTS = new Products();
-	
+
 
 ?>
