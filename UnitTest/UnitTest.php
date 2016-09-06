@@ -8,6 +8,7 @@
 <?php 
 	require_once("../Models/Users.php");
 	require_once("../Models/Authentication.php");
+	require_once("../Models/Products.php");
 
 	$myUser = $USERS->getUser('John');
 
@@ -26,5 +27,29 @@
 	$AUTHENTICATION->logoutUser();
 
 ?>
+
+<form method="post" id="addProduct" enctype="multipart/form-data">
+	<input type="file" name="fileToUpload"/>
+	<input type="text" name="ProductName"/>
+	<input type="number" step="any" name="ProductPrice"/>
+	<select name="Category">
+		<option value="1">MEN-LEATHER</option>
+		<option value="2">MEN-RUBBER SHOES</option>
+		<option value="3">MEN-SLIPPERS</option>
+		<option value="4">WOMEN-FLATS</option>
+		<option value="5">WOMEN-HEELS</option>
+		<option value="6">WOMEN-WEDGE</option>
+		<option value="7">KIDS-RUBBER SHOES</option>
+		<option value="8">KIDS-SLIPPERS(BOYS)</option>
+		<option value="9">KIDS-SLIPPERS(GIRLS)</option>
+
+	</select>
+
+	<input type="text" name="Details"/>
+</form>
+
+<script>
+
+</script>
 </body>
 </html>
