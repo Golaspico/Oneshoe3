@@ -85,6 +85,15 @@
 			//You need the jquery.form.js to use this
 				alert(data);
 				console.log(data);
+
+				//After Inserting Repopulate the Product List
+				$.post("../Controller/Products/List.php",
+		            
+		            function(response){
+		            $("#ProductList").html(response);
+		            deleteProduct();
+		        });
+		        //End of Repopulating
 		});
 
 		
