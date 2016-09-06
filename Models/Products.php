@@ -106,4 +106,7 @@
 		}
 	}
 
+	$PRODUCTS = new Products();
+	
+
 ?>
