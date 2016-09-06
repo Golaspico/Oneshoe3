@@ -68,9 +68,41 @@
 				}
 
 				//
-				header("Location: http://localhost/Encrypt/AdminFileManagement.php");
-				die();
+				
 
+		}
+
+
+
+		public function deleteProduct($valProductID)
+		{
+				$servername = "127.0.0.1";
+				$username = "root";
+				$password = "";
+				$dbname = "oneshoe";
+
+				$conn = new mysqli($servername, $username, $password,$dbname);
+
+				$sql = "DELETE FROM products WHERE `ProductsID`='$valProductID'";
+				$conn->query($sql);
+
+				return "Deleted";
+		}
+
+		public function updateProduct($valProductID,$valProductName,$valProductPrice,$valProductImage,$valCategory,$valDetails)
+		{
+				$servername = "127.0.0.1";
+				$username = "root";
+				$password = "";
+				$dbname = "oneshoe";
+
+				$conn = new mysqli($servername, $username, $password,$dbname);
+
+				$sql = "UPDATE `products` SET `ProductName`='$valProductName',`ProductPrice`='$valProductPrice',`Image`='$valImage',`Category`='$valCategory',`Details`='Details'";
+
+				$conn->query($sql);
+
+				return "Updated Products";
 		}
 	}
 
