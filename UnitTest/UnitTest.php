@@ -59,6 +59,7 @@
 <!-- END OF PRODUCT INSERTION FORM -->
 
 
+
 <!-- THIS IS THE PRODUCT DELETION LIST -->
 <hr>
 	<h4>IN HERE WE POPULATE THIS DIV WITH ALL THE LIST OF PRODUCTS</h4>
@@ -109,6 +110,7 @@
 		            function(response){
 		            $("#ProductList").html(response);
 		            deleteProduct();
+		            updateProduct();
 		        });
 
 		  
@@ -134,7 +136,8 @@ function deleteProduct()
 		            
 		            function(response){
 		            $("#ProductList").html(response);
-		             deleteProduct(); 
+		             deleteProduct();
+		             updateProduct(); 
 		        });
 			//END OF RE POPULATING WITHOUT REFRESHING.
 				
@@ -144,6 +147,31 @@ function deleteProduct()
 }
 </script>
 <!-- END OF THE DLETE PRODUCT CALL -->
+
+
+<script>
+function updateProduct()
+{
+	$(document).ready(function(){
+		$(".UpdateProduct").ajaxForm(function(data){
+			//You need the jquery.form.js to use this
+				alert(data);
+				console.log(data);
+			//THEN WE RE POPULATE THE PRODUCT LIST AFTER DELETING
+			$.post("../Controller/Products/List.php",
+		            
+		            function(response){
+		            $("#ProductList").html(response);
+		             deleteProduct(); 
+		             updateProduct();
+		        });
+			//END OF RE POPULATING WITHOUT REFRESHING.
+				
+		});
+
+	});
+}
+</script>
 
 
 </body>

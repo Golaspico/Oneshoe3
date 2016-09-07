@@ -89,7 +89,7 @@
 				return "Deleted";
 		}
 
-		public function updateProduct($valProductID,$valProductName,$valProductPrice,$valProductImage,$valCategory,$valDetails)
+		public function updateProduct($valProductID,$valProductName,$valProductPrice,$valCategory,$valDetails)
 		{
 				$servername = "127.0.0.1";
 				$username = "root";
@@ -98,7 +98,7 @@
 
 				$conn = new mysqli($servername, $username, $password,$dbname);
 
-				$sql = "UPDATE `products` SET `ProductName`='$valProductName',`ProductPrice`='$valProductPrice',`Image`='$valImage',`Category`='$valCategory',`Details`='Details'";
+				$sql = "UPDATE `products` SET `ProductName`='$valProductName',`ProductPrice`='$valProductPrice',`Category`='$valCategory',`Details`='Details' WHERE `ProductsID`='$valProductID'";
 
 				$conn->query($sql);
 
