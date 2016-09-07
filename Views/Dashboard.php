@@ -100,7 +100,38 @@
 
 <body>
 
-<?php echo $_SESSION['UserName'];?>
+<div class="productListView"><!-- productListView -->
+    <div class="container">
+        
+        <div class="row" id="productList">
+            
+            
+
+
+
+        </div>
+
+
+    </div>
+
+    <div class="paginationWrapper">
+        <div class="text-center">
+    <ul class="pagination">
+        <li><a href="#" aria-label="Previous"><span aria-hidden="true">«</span></a></li> 
+            <li><a href="#">1</a></li> 
+            <li><a href="#">2</a></li> 
+            <li><a href="#">3</a></li>
+            <li><a href="#">4</a></li> 
+            <li><a href="#">5</a></li> 
+            <li><a href="#" aria-label="Next"><span aria-hidden="true">»</span></a>
+    </ul>
+    </div> 
+        
+    </div> 
+
+    
+
+</div><!-- end of productListView -->
 
 
 
@@ -114,8 +145,28 @@
 <script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1.7.0/jquery.min.js"></script>
 <script type="text/javascript" src="../js/jquery.eislideshow.js"></script>
 <script type="text/javascript" src="../js/jquery.easing.1.3.js"></script>
+<script src="../js/jquery.form.js"></script>
+<script>
+  $(document).ready(function(){
 
+    
+      //You need the jquery.form.js to use this
+        // alert(data);
+        
 
+        //After Inserting Repopulate the Product List
+        $.post("../Controller/Products/ListProducts.php",
+                
+                function(response){
+                $("#productList").html(response);
+              
+            });
+            //End of Repopulating
+   
+
+    
+  });
+</script>
 
    
 </body>
