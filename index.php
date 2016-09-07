@@ -5,7 +5,7 @@
 	<title>SoleSearchPH</title>
 	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
     <link href='http://fonts.googleapis.com/css?family=Open+Sans+Condensed:300|Playfair+Display:400italic' rel='stylesheet' type='text/css' />	
-    <link href="css/font-awesome.min.css" rel="stylesheet">
+    
 	<meta name="viewport" content="width=device-width, initial-scale=1">    
     <link href="css/animate.css" rel="stylesheet">
     <link rel="stylesheet" href="css/main.css">
