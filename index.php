@@ -59,7 +59,7 @@
             </li>  
 
 
-          <li class="ctmHighlight"><a href="" class="navTitles">Login</a></li>
+          <li class="ctmHighlight"><a href="Views/Login.php" class="navTitles">Login</a></li>
           <li class="ctmHighlight"><a href="" class="navTitles">Sign Up</a></li>
           <li class="ctmHighlight"><a href="" class="navTitles">About Us</a></li>         
         </ul>        
