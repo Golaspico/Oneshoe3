@@ -8,11 +8,11 @@
 <body>
 
 <?php 
-	require_once("../Models/Users.php");
-	require_once("../Models/Authentication.php");
-	require_once("../Models/Products.php");
+	// require_once("../Models/Users.php");
+	// require_once("../Models/Authentication.php");
+	// require_once("../Models/Products.php");
 
-	$myUser = $USERS->getUser('John');
+	// $myUser = $USERS->getUser('John');
 
 	// Email, Password
 	// Will return Failed or the Object of a User
@@ -29,6 +29,39 @@
 	// $AUTHENTICATION->logoutUser();
 
 ?>
+
+<h1>EVERYTHING IN THIS PAGE IS PURELY HTML AND JAVASCRIPT</h1>
+
+<!-- THIS IS THE USERS DIV -->
+<h2> IN THIS DIV, WE GET THE INFORMATION OF THE USER USING AJAX JQUERY BY JSON OBJECT </h2>
+<div id="UsersDiv">
+	<p id="UserName"></p>
+	<p id="Email"></p>
+	<p id="Address"></p>
+	<p id="FullName"></p>
+	<p id="Role"></p>
+	<h4 id="StatusMessage"></h4>
+
+</div>
+<h2> YOU CAN DOUBLE CHECK THE INSPECTORS CONSOLE FOR THE OBJECT DATA </h2>
+<!-- END OF USERS DIV -->
+
+
+<h2> IN THIS SECTION WE CAN TRY TO LOG IN BUT YOU WOULD HAVE TO IMPLEMENT YOUR OWN VALIDATION </h2>
+
+<!-- THIS IS THE LOG IN TEST -->
+<div>
+	<form method="post" id="loginForm">
+		<input type="text" name="Email" placeholder="Email Address">
+		<input type="password" name="Password" placeholder="Password">
+		<button type="Submit">Log In</button>
+	</form>
+</div>
+<br>
+<!-- END OF THE LOG IN TEST -->
+
+
+
 <!-- THIS IS THE PRODUCT INSERTION FORM -->
 <form method="post" action="../Controller/Products/Insert.php" id="addProduct" enctype="multipart/form-data">
 	<input type="file" name="fileToUpload"/>
@@ -78,13 +111,88 @@
 
 <script src="../js/bootstrap.min.js"></script>
 
+
+
+
+
+<!-- USERS SECTION USERS SECTION USERS SECTION USERS SECTION USERS SECTION USERS SECTION USERS SECTION USERS SECTION-->
+<!-- IN THE DATA ATTRIBUTE WE INSERT "USERNAME AS THE PARAMETER TO GET THE INFORMATION" -->
+<script>
+	$(document).ready(function(){
+		 $.ajax({
+            url:"../Controller/Users/Get.php",
+            dataType:'json',
+            type:'post',
+            data:{"UserName":"John"},
+            success:function(data){
+               		
+                    console.log(data);
+                    $("#UserName").html(data.UserName);
+                    $("#Email").html(data.Email);
+                    $("#FullName").html(data.FullName);
+                    $("#Address").html(data.Address);
+                    $("#Role").html(data.Role);
+            }
+        });
+
+	})
+	 
+
+</script>
+
+
+
+<!-- END OF USERS SECTION END OF USERS SECTION END OF USERS SECTION END OF USERS SECTION END OF USERS SECTION END OF USERS SECTION -->
+
+<!-- START OF LOG IN SCRIPT -->
+<script>
+	$(document).ready(function(){
+		$("#loginForm").submit(function(){
+
+				$.ajax({
+		            url:"../Controller/Authentication/Login.php",
+		            dataType:'json',
+		            type:'post',
+		            data:$(this).serialize(),
+		            success:function(result){
+		            	console.log(result.Status);
+		            	
+		               		if(result.Status == "Success")
+		               		{
+
+		               			   $("#UserName").html(result.UserName);
+				                    $("#Email").html(result.Email);
+				                    $("#FullName").html(result.FullName);
+				                    $("#Address").html(result.Address);
+				                    $("#Role").html(result.Role);
+				                    $("#StatusMessage").html("LOG IN SUCCESS");
+				                    
+		               		}else{
+		               			$("#StatusMessage").html("Incorrect Login");
+		               		}
+		                	
+		                 
+		            }
+		        });
+
+			return false;
+		});
+
+	});
+</script>
+
+<!-- END OF LOG IN SCRIPT -->
+
+
+
+
 <!-- SCRIPT FOR INSERTING PRODUCTS -->
 <script>
 	$(document).ready(function(){
 
 		$("#addProduct").ajaxForm(function(data){
 			//You need the jquery.form.js to use this
-				alert(data);
+				// alert(data);
 				console.log(data);
 
 				//After Inserting Repopulate the Product List
@@ -93,6 +201,7 @@
 		            function(response){
 		            $("#ProductList").html(response);
 		            deleteProduct();
+		            updateProduct(); 
 		        });
 		        //End of Repopulating
 		});
@@ -129,7 +238,7 @@ function deleteProduct()
 	$(document).ready(function(){
 		$(".DeleteProduct").ajaxForm(function(data){
 			//You need the jquery.form.js to use this
-				alert(data);
+				// alert(data);
 				console.log(data);
 			//THEN WE RE POPULATE THE PRODUCT LIST AFTER DELETING
 			$.post("../Controller/Products/List.php",
@@ -155,7 +264,7 @@ function updateProduct()
 	$(document).ready(function(){
 		$(".UpdateProduct").ajaxForm(function(data){
 			//You need the jquery.form.js to use this
-				alert(data);
+				// alert(data);
 				console.log(data);
 			//THEN WE RE POPULATE THE PRODUCT LIST AFTER DELETING
 			$.post("../Controller/Products/List.php",

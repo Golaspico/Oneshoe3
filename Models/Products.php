@@ -41,10 +41,10 @@
 				    $uploadOk = 0;
 				}
 				// Check file size
-				if ($valImage["fileToUpload"]["size"] > 500000) {
-				    echo "Sorry, your file is too large.";
-				    $uploadOk = 0;
-				}
+				// if ($valImage["fileToUpload"]["size"] > 500000) {
+				//     echo "Sorry, your file is too large.";
+				//     $uploadOk = 0;
+				// }
 				// Allow certain file formats
 				if($imageFileType != "jpg" && $imageFileType != "png" && $imageFileType != "jpeg"
 				    && $imageFileType != "gif") {
@@ -98,7 +98,7 @@
 
 				$conn = new mysqli($servername, $username, $password,$dbname);
 
-				$sql = "UPDATE `products` SET `ProductName`='$valProductName',`ProductPrice`='$valProductPrice',`Category`='$valCategory',`Details`='Details' WHERE `ProductsID`='$valProductID'";
+				$sql = "UPDATE `products` SET `ProductName`='$valProductName',`ProductPrice`='$valProductPrice',`Category`='$valCategory',`Details`='$valDetails' WHERE `ProductsID`='$valProductID'";
 
 				$conn->query($sql);
 
