@@ -14,6 +14,7 @@
     <link rel="stylesheet" href="../css/chris.css">
     <link rel="stylesheet" href="../css/bootstrap.min.css">
     <link rel="stylesheet" href="../css/customstyle.css">
+    <link rel="stylesheet" href="../css/font-awesome.min.css">
     
    
 
@@ -34,7 +35,7 @@
       <div class="collapse navbar-collapse" id="collapse">
 
         <ul class="nav navbar-nav navbar-right moveDown">
-            <li class="dropdown ctmHighlight"><a href="#" class="navTitles">Men<i class="glyphicon glyphicon-menu-down"></i></a>
+            <!-- <li class="dropdown ctmHighlight"><a href="#" class="navTitles">Men<i class="glyphicon glyphicon-menu-down"></i></a>
                 <ul role="menu" class="sub-menu">
                     <li><a href="Mleather.php" >Leather</a></li>
                     <li><a href="MRubbershoes.php">Rubber Shoes</a></li> 
@@ -54,12 +55,32 @@
                     <li><a href="KSlippersB.php">Slippers (Boys) </a></li> 
                     <li><a href="KFlatsG.php">Flats (Girls) </a></li> 
                 </ul>
-            </li>  
+            </li>   -->
+            <li>
+              <div class="col-sm-8"><!--/dropdownmenu-->
+					
+						<div class="shop-menu pull-right">
+						<div class="dropdown">
 
+							
+    
 
-          <li class="ctmHighlight"><a href="#" class="navTitles">Login</a></li>
-          <li class="ctmHighlight"><a href="#" class="navTitles">Sign Up</a></li>
-          <li class="ctmHighlight"><a href="#" class="navTitles">About Us</a></li>         
+	
+					<button class="btn btn-primary dropdown-toggle" type="button" data-toggle="dropdown">Account
+								<span class="caret"></span></button>
+								<ul class="dropdown-menu">
+								<li><a href=""><i class="fa fa-user"></i>Hi : </a></li>
+								<li><a href="Dashboard.php"><i class="fa fa-briefcase"></i>Dashboard</a></li>
+								<li><a href=""><i class="fa fa-calendar-o"></i>Reports</a></li>
+								<li><a href="logout_sucess.php"><i class="fa fa-lock"></i>Logout</a></li>
+								</ul>
+
+								</div><!--/dropdownmenu-->		
+						</div>
+					</div>
+            </li>
+          
+                
         </ul>        
       </div><!-- collapse navbar-collapse -->
     </div><!-- container -->
@@ -76,27 +97,7 @@
 
 <body>
 
-<div class="container">
-    <div class="row goingDown">
-        <div class="col-md-5">
-            <form method="post" id="loginForm">
-                <div class="form-group">
-                    <input type="email" name="Email" placeholder="Email Address" class="loginforms">
-                </div>    
-                    
-                <div class="form-group">
-                    <input type="password" name="Password" placeholder="Password" class="loginforms">
-                </div> 
-                  
-                <button type="Submit" class="btn btn-primary magicbtn">Log In</button>
-            </form>
-                <br>
-                <a href="#">Already a member?</a><br>
-                <a href="#">Not yet a member?</a>
-        </div>
-    </div>
-</div>
-<center><h2><span id="StatusMessage" style="display:none;"></span></h2></center>
+<?php echo $_SESSION['UserName'];?>
 
 
 
@@ -112,55 +113,7 @@
 <script type="text/javascript" src="../js/jquery.easing.1.3.js"></script>
 
 
-<!-- START OF LOG IN SCRIPT -->
-<script>
-    $(document).ready(function(){
-        $("#loginForm").submit(function(){
 
-                $.ajax({
-                    url:"../Controller/Authentication/Login.php",
-                    dataType:'json',
-                    type:'post',
-                    data:$(this).serialize(),
-                    success:function(result){
-                        console.log(result.Status);
-                        
-                            if(result.Status == "Success")
-                            {
-
-                                   // $("#UserName").html(result.UserName);
-                                   //  $("#Email").html(result.Email);
-                                   //  $("#FullName").html(result.FullName);
-                                   //  $("#Address").html(result.Address);
-                                   //  $("#Role").html(result.Role);
-                                    $("#StatusMessage").html("LOG IN SUCCESS");
-                                    $("#StatusMessage").fadeIn(1000);
-                                    $("#StatusMessage").fadeOut(1000);
-                                    
-                                     setTimeout(
-                          function() 
-                          {
-                            //do something special
-                            window.location.replace("Dashboard.php");
-                          }, 2000);     
-                                    
-                            }else{
-                                $("#StatusMessage").html("Incorrect Login");
-                                $("#StatusMessage").fadeIn(1000);
-                                $("#StatusMessage").fadeOut(1000);
-                            }
-                            
-                         
-                    }
-                });
-
-            return false;
-        });
-
-    });
-</script>
-
-<!-- END OF LOG IN SCRIPT -->
    
 </body>
 </html>
