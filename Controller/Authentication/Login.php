@@ -22,6 +22,6 @@
 					);
 	$encoded = json_encode($encode);
 	echo $encoded;
-
+	session_start();
 	$_SESSION['UserName'] = $myResult['UserName'];
 ?>

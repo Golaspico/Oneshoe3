@@ -1,3 +1,6 @@
+<?php 
+	session_start();
+?>
 <!DOCTYPE html>
 <html>
 <head>	
@@ -69,7 +72,7 @@
 					<button class="btn btn-primary dropdown-toggle" type="button" data-toggle="dropdown">Account
 								<span class="caret"></span></button>
 								<ul class="dropdown-menu">
-								<li><a href=""><i class="fa fa-user"></i>Hi : </a></li>
+								<li><a href=""><i class="fa fa-user"></i>Hi : <?php echo $_SESSION['UserName'];?></a></li>
 								<li><a href="Dashboard.php"><i class="fa fa-briefcase"></i>Dashboard</a></li>
 								<li><a href=""><i class="fa fa-calendar-o"></i>Reports</a></li>
 								<li><a href="logout_sucess.php"><i class="fa fa-lock"></i>Logout</a></li>
