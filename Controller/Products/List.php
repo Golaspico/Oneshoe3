@@ -56,7 +56,7 @@
 
 	        		<div>Merchant Owner : <?php echo $row['UserName'];?></div>
 	        		<form class="DeleteProduct" action="../Controller/Products/Delete.php" method="post">
-	        			
+	        			<input type="hidden" name="ProductsID" value="<?php echo $row['ProductsID'];?>"/>
 	        			<button type="submit">DELETE</button>
 	        		</form>
 

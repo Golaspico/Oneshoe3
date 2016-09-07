@@ -3,7 +3,7 @@
 -- http://www.phpmyadmin.net
 --
 -- Host: 127.0.0.1
--- Generation Time: Sep 07, 2016 at 12:24 AM
+-- Generation Time: Sep 07, 2016 at 04:58 PM
 -- Server version: 10.1.13-MariaDB
 -- PHP Version: 5.6.21
 
@@ -71,8 +71,10 @@ CREATE TABLE `products` (
 --
 
 INSERT INTO `products` (`ProductsID`, `UsersID`, `ProductName`, `ProductPrice`, `Image`, `Category`, `Details`) VALUES
-(7, 1, 'menchook', 321, 'mizuno-rockman-exclusive-truforce-kickstarter-4-400x250 (1).jpg', 3, 'bbfasd'),
-(8, 1, 'asdfasd', 321, 'AizensWallet2.PNG', 1, 'adasf');
+(13, 1, 'Black Mark Flats', 43212, 'gwedges1.jpg', 4, 'For Sizer'),
+(14, 1, 'KFlats', 43212, 'KFlats4.jpg', 4, 'Magic Flats'),
+(15, 1, 'Krubber Shoes', 4321, 'krubbershoes2.jpg', 7, 'Sober shoes'),
+(16, 1, 'Marl Running Shoes', 8020, 'mrubbershoes2.jpg', 2, 'Running Shoes for Men and Women');
 
 -- --------------------------------------------------------
 
@@ -162,7 +164,7 @@ ALTER TABLE `orders`
 -- AUTO_INCREMENT for table `products`
 --
 ALTER TABLE `products`
-  MODIFY `ProductsID` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=9;
+  MODIFY `ProductsID` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=17;
 --
 -- AUTO_INCREMENT for table `sizes`
 --
