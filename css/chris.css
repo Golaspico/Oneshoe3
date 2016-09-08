@@ -34,5 +34,23 @@
     border-spacing: 2px;
     border-style: none;
     border-color: black;
-    
+
 }
+
+.sizesPanel
+{
+    background-color: lavender;
+}
+
+body 
+{
+    font-family: 'Open Sans', sans-serif !important;
+}
+
+.btn span.glyphicon {               
+    opacity: 0;             
+}
+.btn.active span.glyphicon{                
+    opacity: 1;             
+}
+

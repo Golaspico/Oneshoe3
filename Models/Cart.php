@@ -1,7 +1,7 @@
 <?php
 	class Cart
 	{
-		public function insertCart($valUsersID,$valProductsID,$valSizesID,$valAmount,$valPrice,$valTotalAmount,$valOrderID)
+		public function insertCart($valUsersID,$valProductsID,$valSizesID,$valAmount,$valPrice,$valTotalAmount,$valOrderID,$valColor)
 		{
 			$servername = "127.0.0.1";
 	        $username = "root";
@@ -10,7 +10,7 @@
 	        // Create connection
 	        $conn = new mysqli($servername, $username, $password,$dbname);
 
-	        $sql = "INSERT INTO `carts` (UsersID,ProductsID,SizesID,Amount,Price,TotalAmount,OrderID) VALUES ('$valUsersID','$valProductsID','$valSizesID','$valAmount','$valPrice','$valTotalAmount','$valOrderID')";
+	        $sql = "INSERT INTO `carts` (UsersID,ProductsID,SizesID,Amount,Price,TotalAmount,OrderID,Color) VALUES ('$valUsersID','$valProductsID','$valSizesID','$valAmount','$valPrice','$valTotalAmount','$valOrderID',$valColor)";
 	        $conn->query($sql);
 
 	        return "Added to Cart";

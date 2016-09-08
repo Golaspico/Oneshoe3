@@ -58,7 +58,8 @@ error_reporting(E_ALL);
 	        		<div><strong>NAME</strong> : <?php echo $row['ProductName']; ?></div>
 	        		<div><strong>PRICE</strong> : <?php echo $row['ProductPrice']; ?></div>
 	        		<div><strong>DETAILS</strong> : <?php echo $row['Details']; ?></div>
-	        		<div><strong>Category</strong> : <?php changeCategory($row['Category']);?></div>
+	        		<div><strong>CATEGORY</strong> : <?php changeCategory($row['Category']);?></div>
+	        		<div><strong>STOCKS</strong> : <?php echo $row['Stocks'];?></div>
 
 
 	        		

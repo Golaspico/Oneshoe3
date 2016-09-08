@@ -9,7 +9,7 @@
 
 	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
     <link href='http://fonts.googleapis.com/css?family=Open+Sans+Condensed:300|Playfair+Display:400italic' rel='stylesheet' type='text/css' />	
-    
+    <link href="https://fonts.googleapis.com/css?family=Open+Sans" rel="stylesheet">
 	<meta name="viewport" content="width=device-width, initial-scale=1">    
     <link href="../css/animate.css" rel="stylesheet">
     
@@ -59,10 +59,13 @@
                     <li><a href="KFlatsG.php">Flats (Girls) </a></li> 
                 </ul>
             </li>   -->
+            <li class="ctmHighlight">
+                <a href="#"><i class="fa fa-shopping-cart fa-2x" aria-hidden="true"><span class="badge badge" id="cartcounter"></span></i></a>
+            </li>
             <li>
               <div class="col-sm-8"><!--/dropdownmenu-->
 					
-						<div class="shop-menu pull-right">
+						<div class="shop-menu">
 						<div class="dropdown">
 
 							
@@ -71,7 +74,7 @@
 	
 					<button class="btn btn-primary dropdown-toggle" type="button" data-toggle="dropdown">Account
 								<span class="caret"></span></button>
-								<ul class="dropdown-menu">
+								<ul class="dropdown-menu" style="left:-70px;">
 								<li><a href=""><i class="fa fa-user"></i>Hi : <?php echo $_SESSION['UserName'];?></a></li>
 								<li><a href="Dashboard.php"><i class="fa fa-briefcase"></i>Dashboard</a></li>
 								<li><a href=""><i class="fa fa-calendar-o"></i>Reports</a></li>
@@ -103,7 +106,7 @@
 <div class="productListView"><!-- productListView -->
     <div class="container">
         
-        <div class="row" id="productList">
+        <div class="row" id="productList" style="margin-top:10%;">
             
             
 
@@ -114,7 +117,7 @@
 
     </div>
 
-    <div class="paginationWrapper">
+  <!--   <div class="paginationWrapper">
         <div class="text-center">
     <ul class="pagination">
         <li><a href="#" aria-label="Previous"><span aria-hidden="true">«</span></a></li> 
@@ -127,7 +130,7 @@
     </ul>
     </div> 
         
-    </div> 
+    </div>  -->
 
     
 
@@ -155,7 +158,7 @@
         
 
         //After Inserting Repopulate the Product List
-        $.post("../Controller/Products/ListProducts.php",
+        $.post("../Controller/Products/PurchasableItemList.php",
                 
                 function(response){
                 $("#productList").html(response);

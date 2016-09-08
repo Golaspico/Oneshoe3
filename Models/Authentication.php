@@ -44,6 +44,7 @@
 
 			// Finally, destroy the session.
 			session_destroy();
+			$location = $_SERVER['DOCUMENT_ROOT'];
 			header("Location: http://solesearch");
 		}
 
