@@ -44,7 +44,7 @@
 
 			// Finally, destroy the session.
 			session_destroy();
-			header("Location: http://localhost");
+			header("Location: http://solesearch");
 		}
 
 	}

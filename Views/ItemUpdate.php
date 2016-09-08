@@ -19,13 +19,7 @@
     <link rel="stylesheet" href="../css/customstyle.css">
     <link rel="stylesheet" href="../css/font-awesome.min.css">
     
-   <style>
-    body
-    {
-        font-family: 'Roboto', sans-serif !important;
-        color:gray;
-    }
-   </style>
+   
 
 </head>
 
@@ -106,91 +100,77 @@
 
 <body>
 
+<?php
+	$myProduct = $_GET['encrypt'];
 
-<div class="container">
+			$servername = "127.0.0.1";
+	        $username = "root";
+	        $password = "";
+	        $dbname = "oneshoe";
+	        // Create connection
+	        $conn = new mysqli($servername, $username, $password,$dbname);
+	        $sql = "SELECT * FROM `products` WHERE ProductsID='$myProduct'";
 
-<div class="col-md-12" style="margin-top:10%;">
-    <!-- THIS IS THE PRODUCT INSERTION FORM -->
-<div class="col-md-12">
+			$result = $conn->query($sql);
 
-    
-    <form method="post" action="../Controller/Products/Insert.php" id="addProduct" enctype="multipart/form-data">
-       <div class="col-md-5">
-        <div class="form-group">
-            <label>What are you selling?</label>
-            <input type="text" name="ProductName" placeholder="Display Item Name" class="loginforms" />
-        </div>
-        
-        <div class="form-group">
-            <label>Price</label>
-            <input type="number" step="any" name="ProductPrice" placeholder="Price" class="loginforms"/>
-        </div>
-        <div class="form-group">
-            <label>Kind of Shoe</label>
-            <select name="Category">
-                <option value="1">MEN-LEATHER</option>
-                <option value="2">MEN-RUBBER SHOES</option>
-                <option value="3">MEN-SLIPPERS</option>
-                <option value="4">WOMEN-FLATS</option>
-                <option value="5">WOMEN-HEELS</option>
-                <option value="6">WOMEN-WEDGE</option>
-                <option value="7">KIDS-RUBBER SHOES</option>
-                <option value="8">KIDS-SLIPPERS(BOYS)</option>
-                <option value="9">KIDS-SLIPPERS(GIRLS)</option>
+			if($result->num_rows > 0){
+				$row = $result->fetch_assoc();
+			}else{
+				die();
+			}
+	
+?>
+<div class="container" style="margin-bottom:15px;">
+	<div class="row" style="margin-top:10%;">
+		<center><h2 id ="resultMessage" style="display:none">ITEM UPDATED</h2></center>
+		<div id="ProductList">
+		<form class="UpdateProduct" action="../Controller/Products/Update.php" method="post">
+	        		<div><center><img src="<?php echo "../images/uploads/". $row['Image'];?>" width="200" height="200"></center></div>
+	        			<input type="hidden" name="ProductsID" value="<?php echo $row['ProductsID'];?>" class="form-control"/>
+	        	
+	        		<div class="form-group">
+	        			<label>Product Name</label>
+	        			<input type="text" name="ProductName" value="<?php echo $row['ProductName']; ?>" placeholder="Product Name" class="loginforms"/>
+	        		</div>	
+	        		<div class="form-group">
+	        			<label>Product Price</label>
+	        			<input type="text" name="ProductPrice" value="<?php echo $row['ProductPrice']; ?>" placeholder="Product Price" class=" loginforms"/>
+	        		</div>	
+	        		<div class="form-group">
+	        			<label>Details</label>
+	        			<input type="text" name="Details" value="<?php echo $row['Details']; ?>" placeholder="Product Details" class="loginforms"/>
+	        		</div>	
+	        		<div class="form-group">
+	        			<label>Category</label>
+	        			<select name="Category">
+							<option value="1" <?php if($row['Category'] == 1)echo "selected";?>>MEN-LEATHER</option>
+							<option value="2" <?php if($row['Category'] == 2)echo "selected";?>>MEN-RUBBER SHOES</option>
+							<option value="3" <?php if($row['Category'] == 3)echo "selected";?>>MEN-SLIPPERS</option>
+							<option value="4" <?php if($row['Category'] == 4)echo "selected";?>>WOMEN-FLATS</option>
+							<option value="5" <?php if($row['Category'] == 5)echo "selected";?>>WOMEN-HEELS</option>
+							<option value="6" <?php if($row['Category'] == 6)echo "selected";?>>WOMEN-WEDGE</option>
+							<option value="7" <?php if($row['Category'] == 7)echo "selected";?>>KIDS-RUBBER SHOES</option>
+							<option value="8" <?php if($row['Category'] == 8)echo "selected";?>>KIDS-SLIPPERS(BOYS)</option>
+							<option value="9" <?php if($row['Category'] == 9)echo "selected";?>>KIDS-SLIPPERS(GIRLS)</option>
 
-            </select>
-        </div>
-
-
-        <div class="form-group col-md-3">
-            <label>Size 1</label>
-            <input type="number" name="Size1" class="loginforms" required="required" placeholder="30">
-        </div>
-        <div class="form-group col-md-3">
-            <label>Size 2</label>
-            <input type="number" name="Size2" class="loginforms" required="required" placeholder="31">
-        </div>
-        <div class="form-group col-md-3">
-            <label>Size 3</label>
-            <input type="number" name="Size3" class="loginforms" required="required" placeholder="32">
-        </div>
-        <div class="form-group col-md-3">
-            <label>Size 4</label>   
-            <input type="number" name="Size4" class="loginforms" required="required" placeholder="33">
-        </div>
-
-        <!-- <div class="form-group">
-            <select name="Color">
-                <option "1">Black</option>
-                <option "2">White</option>
-                <option "3">Gray</option>
-            </select>
-        </div> -->
-
-         <input type="file" name="fileToUpload" />
-
-        <input name="UsersID" type="hidden" value="<?php echo $_SESSION['UsersID'];?>"/>
-    </div>
-    <div class="col-md-5">
-        <div class="form-group">
-                <label>Details</label>
-                <textarea name="Details" placeholder="Item Description" style="margin-top:10px;" rows="10"></textarea>
-            </div>
-    </div>
-        <div class="col-md-12">
-            <button type="Submit" class="btn btn-primary col-xs-12"> <i class="fa fa-plus-circle" aria-hidden="true"></i> ADD ITEM</button>
-        </div>
-        
-    </form>
-    <!-- END OF PRODUCT INSERTION FORM -->
-    </div>   
-</div>    
-
-
-    <div id="ProductList" style="margin-top:10%;" class="col-md-12">
-            
-    </div>
+						</select>
+	        		</div>	
+	        			
+						<button type="submit" class="btn btn-primary col-xs-12">UPDATE</button>
+</form>
+		</div>
+			<center><a href="DashBoard2.php" class="btn btn-danger col-xs-12" style="margin-top:20px;">BACK</a></center>
+	</div>
 </div>
+
+
+
+
+
+   
+
+
+
 
        
 
@@ -202,49 +182,64 @@
 <script type="text/javascript" src="../js/jquery.eislideshow.js"></script>
 <script type="text/javascript" src="../js/jquery.easing.1.3.js"></script>
 <script src="../js/jquery.form.js"></script>
-
-
-<!-- START OF LISTING THE PRODUCTS -->
 <script>
-    $(document).ready(function(){
-                $.post("../Controller/Products/MerchantList.php",
-                    
-                    function(response){
-                    $("#ProductList").html(response);
-                    deleteProduct();
-                    updateProduct();
-                });
 
-          
+$(document).ready(function(){
+		// $(".UpdateProduct").ajaxForm(function(data){
+		// 	//You need the jquery.form.js to use this
+		// 		// alert(data);
+		// 		console.log(data);
+		// 	//THEN WE RE POPULATE THE PRODUCT LIST AFTER DELETING
+		// 	$.post("../Controller/Products/UpdateSingleDiv.php",
+		            
+		//             function(response){
+		//             $("#ProductList").html(response);
+		             
+		//              updateProduct();
+		//         });
+		// 	//END OF RE POPULATING WITHOUT REFRESHING.
+				
+		// });
 
-    });
-</script>
-<!-- END OF LISTING THE PRODUCTS -->
 
-<!-- SCRIPT FOR INSERTING PRODUCTS -->
-<script>
-    $(document).ready(function(){
+		updateProduct();
 
-        $("#addProduct").ajaxForm(function(data){
-            //You need the jquery.form.js to use this
-                // alert(data);
-                console.log(data);
+	});
 
-                //After Inserting Repopulate the Product List
-                $.post("../Controller/Products/MerchantList.php",
-                    
-                    function(response){
-                    $("#ProductList").html(response);
-                    
-                });
-                //End of Repopulating
+
+function updateProduct()
+{
+	$(document).ready(function(){
+		$(".UpdateProduct").submit(function(data){
+			//You need the jquery.form.js to use this
+				// alert(data);
+				console.log(data);
+			//THEN WE RE POPULATE THE PRODUCT LIST AFTER DELETING
+			
+			       $.post("../Controller/Products/Update.php",
+            $(".UpdateProduct").serialize()
+            ,function(response){
+            
         });
 
-        
-    });
+			         $.post("../Controller/Products/UpdateSingleDiv.php",
+            $(".UpdateProduct").serialize()
+            ,function(response){
+            	$("#resultMessage").fadeIn(1000);
+            	$("#resultMessage").fadeOut(1000);
+            updateProduct();
+        });
+
+			//END OF RE POPULATING WITHOUT REFRESHING.
+			return false;
+		});
+
+	});
+}
 </script>
-<!-- END OF INSERTING PRODUCTS SCRIPT -->
 
    
 </body>
 </html>
+
+				

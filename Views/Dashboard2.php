@@ -81,7 +81,7 @@
 								<li><a href=""><i class="fa fa-user"></i>Hi : <?php echo $_SESSION['UserName'];?></a></li>
 								<li><a href="Dashboard.php"><i class="fa fa-briefcase"></i>Dashboard</a></li>
 								<li><a href=""><i class="fa fa-calendar-o"></i>Reports</a></li>
-								<li><a href="logout_sucess.php"><i class="fa fa-lock"></i>Logout</a></li>
+								<li><a href="../Controller/Authentication/Logout.php"><i class="fa fa-lock"></i>Logout</a></li>
 								</ul>
 
 								</div><!--/dropdownmenu-->		
@@ -108,8 +108,8 @@
 
 
 <div class="container">
-    <div class="col-md-5" style="margin-top:10%;">
-            <a href="AddItem.php" class="btn btn-primary">Add Item</a>
+    <div class="col-xs-12" style="margin-top:10%;">
+            <a href="AddItem.php" class="btn btn-primary col-xs-12"><i class="fa fa-plus-circle" aria-hidden="true"></i> ADD ITEM</a>
         </div>  
     <div id="ProductList" style="margin-top:10%;" class="col-md-12">
             
@@ -127,31 +127,7 @@
 <script type="text/javascript" src="../js/jquery.eislideshow.js"></script>
 <script type="text/javascript" src="../js/jquery.easing.1.3.js"></script>
 <script src="../js/jquery.form.js"></script>
-<script>
-function deleteProduct()
-{
 
-    $(document).ready(function(){
-        $(".DeleteProduct").ajaxForm(function(data){
-            //You need the jquery.form.js to use this
-                // alert(data);
-                console.log(data);
-            //THEN WE RE POPULATE THE PRODUCT LIST AFTER DELETING
-            $.post("../Controller/Products/List.php",
-                    
-                    function(response){
-                    $("#ProductList").html(response);
-                     deleteProduct();
-                     updateProduct(); 
-                });
-            //END OF RE POPULATING WITHOUT REFRESHING.
-                
-        });
-
-    });
-}
-</script>
-<!-- END OF THE DLETE PRODUCT CALL -->
 <script>
   $(document).ready(function(){
 
@@ -161,10 +137,10 @@ function deleteProduct()
         
 
         //After Inserting Repopulate the Product List
-        $.post("../Controller/Products/ListProducts.php",
+        $.post("../Controller/Products/MerchantList.php",
                 
                 function(response){
-                $("#productList").html(response);
+                $("#ProductList").html(response);
               
             });
             //End of Repopulating
@@ -174,47 +150,8 @@ function deleteProduct()
   });
 </script>
 
-<!-- START OF LISTING THE PRODUCTS -->
-<script>
-    $(document).ready(function(){
-                $.post("../Controller/Products/List.php",
-                    
-                    function(response){
-                    $("#ProductList").html(response);
-                    deleteProduct(); 
-                     updateProduct();
-                   
-                });
 
-          
 
-    });
-</script>
-<!-- END OF LISTING THE PRODUCTS -->
-
-<script>
-function updateProduct()
-{
-    $(document).ready(function(){
-        $(".UpdateProduct").ajaxForm(function(data){
-            //You need the jquery.form.js to use this
-                // alert(data);
-                console.log(data);
-            //THEN WE RE POPULATE THE PRODUCT LIST AFTER DELETING
-            $.post("../Controller/Products/List.php",
-                    
-                    function(response){
-                    $("#ProductList").html(response);
-                     deleteProduct(); 
-                     updateProduct();
-                });
-            //END OF RE POPULATING WITHOUT REFRESHING.
-                
-        });
-
-    });
-}
-</script>
 
 <!-- START OF THE DELETE PRODUCT CALL -->
 <!-- NOTE : NOTICE THE LISTING PRODUCTS JS IS CALLING THE LINE 102 "deleteProduct()" -->
