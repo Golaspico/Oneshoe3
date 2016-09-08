@@ -13,7 +13,7 @@
                 $sql = "SELECT * FROM `products` JOIN `users` ON products.UsersID=users.UsersID";
             }else if ($_SESSION['Role'] == 2 || $_SESSION['Role'] == 0)
             {
-                $sql = "SELECT * FROM `products` JOIN `users`";
+                $sql = "SELECT * FROM `products` JOIN `users` ON products.UsersID=users.UsersID";
             }
 
             
@@ -56,18 +56,22 @@
             while($row = $result->fetch_assoc())
             {?>
 
-               <div class="col-lg-4  col-sm-6  mobileCenterView">
+               <div class="col-md-3">
                     <form>
-                    <img src="<?php echo "../images/uploads/". $row['Image'];?>" alt="thumb01">
+                    <div><center><img src="<?php echo "../images/uploads/". $row['Image'];?>" alt="thumb01" width="200" height="200"></center></div>
+                    <div><center><strong>MERCHANT : </strong><?php echo $row['UserName']?></center></div>
+                    <div class="row">
+                        <div class="col-md-6">
+                            <button class="col-md-12 btn btn-primary magicbtn"><i class="fa fa-thumbs-o-up" aria-hidden="true"></i> ACCEPT</button>
+                        </div>
+                        <div class="col-md-6">
+                            <button class="col-md-12 btn btn-primary magicbtn"><i class="fa fa-thumbs-o-down" aria-hidden="true"></i> IGNORE</button>
+                        </div>
+                    </div>
                     
                     
-                    
-                    <?php if ($_SESSION['Role'] == 0)
-                    {?>
-                      <button type="submit" class="ctmsubmit btn btn-default"> <span class="glyphicon glyphicon-shopping-cart"></span> Add to Cart</button>
-                    <?php }?>
                    </form>      
-                </div><!-- mobileCenterView --> 
+               </div><!-- mobileCenterView --> 
 
 
       <?php }?>

@@ -114,7 +114,7 @@
 
     </div>
 
-    <div class="paginationWrapper">
+ <!--    <div class="paginationWrapper">
         <div class="text-center">
     <ul class="pagination">
         <li><a href="#" aria-label="Previous"><span aria-hidden="true">«</span></a></li> 
@@ -127,7 +127,7 @@
     </ul>
     </div> 
         
-    </div> 
+    </div>  -->
 
     
 
@@ -155,7 +155,7 @@
         
 
         //After Inserting Repopulate the Product List
-        $.post("../Controller/Products/ListProducts.php",
+        $.post("../Controller/Products/AdminList.php",
                 
                 function(response){
                 $("#productList").html(response);

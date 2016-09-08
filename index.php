@@ -9,6 +9,7 @@
 	<meta name="viewport" content="width=device-width, initial-scale=1">    
     <link href="css/animate.css" rel="stylesheet">
     <link rel="stylesheet" href="css/main.css">
+    <link rel="stylesheet" href="css/chris.css">
     <link rel="stylesheet" href="css/customstyle.css">
 
 
@@ -137,40 +138,31 @@
 </div>    
 
 </header>
-
-<div class="productListView"><!-- productListView -->
-    <div class="container">
+<div class="container">
+        <div class="productListView" id="productListView"><!-- productListView -->
         
-        <div class="row">
             
-          
 
-              
+    <!--     <div class="paginationWrapper">
+            <div class="text-center">
+        <ul class="pagination">
+            <li><a href="#" aria-label="Previous"><span aria-hidden="true">«</span></a></li> 
+                <li><a href="#">1</a></li> 
+                <li><a href="#">2</a></li> 
+                <li><a href="#">3</a></li>
+                <li><a href="#">4</a></li> 
+                <li><a href="#">5</a></li> 
+                <li><a href="#" aria-label="Next"><span aria-hidden="true">»</span></a>
+        </ul>
+        </div> 
+            
+        </div>  -->
 
-
-        </div>
-
-
-    </div>
-
-    <div class="paginationWrapper">
-        <div class="text-center">
-    <ul class="pagination">
-        <li><a href="#" aria-label="Previous"><span aria-hidden="true">«</span></a></li> 
-            <li><a href="#">1</a></li> 
-            <li><a href="#">2</a></li> 
-            <li><a href="#">3</a></li>
-            <li><a href="#">4</a></li> 
-            <li><a href="#">5</a></li> 
-            <li><a href="#" aria-label="Next"><span aria-hidden="true">»</span></a>
-    </ul>
-    </div> 
         
-    </div> 
 
-    
+    </div><!-- end of productListView -->
+</div>
 
-</div><!-- end of productListView -->
 
        
 
@@ -181,6 +173,7 @@
 <script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1.7.0/jquery.min.js"></script>
 <script type="text/javascript" src="js/jquery.eislideshow.js"></script>
 <script type="text/javascript" src="js/jquery.easing.1.3.js"></script>
+<script src="../js/jquery.form.js"></script>
 <script type="text/javascript">
             $(function() {
                 $('#ei-slider').eislideshow({
@@ -191,6 +184,43 @@
                 });
             });
         </script>
- <script src="js/myscript.js"></script>       
+
+ <script>
+ $(document).ready(function(){
+
+        $.post("Controller/Products/PurchasableItemList.php",
+            {"status":"index"},
+            function(response){
+            $("#productListView").html(response);
+            updateProduct();
+        });
+
+ });
+ </script>
+
+
+ <script>
+function updateProduct()
+{
+    $(document).ready(function(){
+        $(".indexform").submit(function(data){
+            //You need the jquery.form.js to use this
+                // alert(data);
+                console.log(data);
+            //THEN WE RE POPULATE THE PRODUCT LIST AFTER DELETING
+            $.post("../Controller/Products/List.php",
+                    
+                    function(response){
+                    $("#ProductList").html(response);
+                     deleteProduct(); 
+                     updateProduct();
+                });
+            //END OF RE POPULATING WITHOUT REFRESHING.
+                
+        });
+
+    });
+}
+</script>
 </body>
 </html>

@@ -1,6 +1,12 @@
 <?php
 
-			
+			$status = "no-status";
+
+			if(isset($_POST['status']))
+			{
+				$status = "index";
+				$productsID = "";
+			}
 
 			$servername = "127.0.0.1";
 	        $username = "root";
@@ -47,7 +53,18 @@
 	        $result = $conn->query($sql);
 	        while($row = $result->fetch_assoc())
 	        {?>
-	        	<form>
+	        	<?php 
+	        		if($status == "no-status")
+	        		{?>
+						<form action="#" method="post">
+	        	<?php	}else{?>
+	        			
+	        		<form action="Views/Login.php" method="get" class="indexform">
+	        		<input type="hidden" name="ProductsID" value="<?php echo $row['ProductsID'];?>"/>
+
+	        	<?php }
+	        	?>
+	        	
 	        	<?php 
 	        		if(isset($_SESSION['UsersID']))
 	        		{?>
@@ -62,9 +79,11 @@
 		        		<div><strong>DETAILS</strong> : <?php echo $row['Details']; ?></div>
 		        		<div><strong>CATEGORY</strong> : <?php changeCategory($row['Category']);?></div>
 		        		<div><strong>STOCKS</strong> : <?php echo $row['Stocks'];?></div>
+		        		<input type="hidden" name=""
+
 		        		<div><center><strong>SIZES</strong></center></div>
 		        <div class="btn-group" data-toggle="buttons">
-		       
+		       	
 
 			
 			

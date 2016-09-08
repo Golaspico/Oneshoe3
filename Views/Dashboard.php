@@ -78,7 +78,7 @@
 								<li><a href=""><i class="fa fa-user"></i>Hi : <?php echo $_SESSION['UserName'];?></a></li>
 								<li><a href="Dashboard.php"><i class="fa fa-briefcase"></i>Dashboard</a></li>
 								<li><a href=""><i class="fa fa-calendar-o"></i>Reports</a></li>
-								<li><a href="logout_sucess.php"><i class="fa fa-lock"></i>Logout</a></li>
+								<li><a href="../Controller/Authentication/Logout.php"><i class="fa fa-lock"></i>Logout</a></li>
 								</ul>
 
 								</div><!--/dropdownmenu-->		
