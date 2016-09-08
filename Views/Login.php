@@ -137,12 +137,17 @@
                                     $("#StatusMessage").fadeIn(1000);
                                     $("#StatusMessage").fadeOut(1000);
                                     
-                                     setTimeout(
-                          function() 
-                          {
-                            //do something special
-                            window.location.replace("Dashboard.php");
-                          }, 2000);     
+                                     if(result.Role == "0"){
+                                        setTimeout(function(){
+                                          //do something special
+                                          window.location.replace("Dashboard.php");
+                                        }, 2000);     
+                                     }else{
+                                        setTimeout(function(){
+                                          //do something special
+                                          window.location.replace("Dashboard2.php");
+                                        }, 2000);     
+                                     }
                                     
                             }else{
                                 $("#StatusMessage").html("Incorrect Login");

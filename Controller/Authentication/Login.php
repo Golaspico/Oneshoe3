@@ -24,4 +24,5 @@
 	echo $encoded;
 	session_start();
 	$_SESSION['UserName'] = $myResult['UserName'];
+	$_SESSION['UsersID'] = $myResult['UsersID'];
 ?>
