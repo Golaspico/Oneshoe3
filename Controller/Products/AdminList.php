@@ -59,23 +59,9 @@
                <div class="col-lg-4  col-sm-6  mobileCenterView">
                     <form>
                     <img src="<?php echo "../images/uploads/". $row['Image'];?>" alt="thumb01">
-                    <div class="sizes">
-                        <ul class="radio-inline">
-                            <li class="sizesList"><label><input type="radio" name="gender" value="30" checked> 30 </label></li>
-                            <li class="sizesList"><label><input type="radio" name="gender" value="30" > 31 </label></li>
-                            <li class="sizesList"><label><input type="radio" name="gender" value="30" > 32 </label></li>
-                            <li class="sizesList"><label><input type="radio" name="gender" value="30" > 33 </label></li>
-                        </ul>
-
-                    </div>
                     
-                    <div class="color">
-                        <ul class="radio-inline">
-                            <li class="sizesList"><label><input type="radio" name="gender" value="Red" checked><span class="badge" style="background-color:Red;">Red</span></label></li>
-                            <li class="sizesList"><label><input type="radio" name="gender" value="Blue" ><span class="badge" style="background-color:Blue;">Blue</span></label></li>
-                            <li class="sizesList"><label><input type="radio" name="gender" value="Gray" ><span class="badge" style="background-color:Gray;">Gray</span></label></li>                           
-                        </ul>
-                    </div>
+                    
+                    
                     <?php if ($_SESSION['Role'] == 0)
                     {?>
                       <button type="submit" class="ctmsubmit btn btn-default"> <span class="glyphicon glyphicon-shopping-cart"></span> Add to Cart</button>

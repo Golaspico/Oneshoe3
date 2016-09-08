@@ -160,7 +160,11 @@
 	        $sql = "INSERT INTO `users` (UserName,Password,FullName,Address,Email,Role) VALUES ('$valUsername','$encryptPassword','$valFullname','$valAddress','$valEmail','$valRole')";
 	        $conn->query($sql);
 
-	        return "$valUsername is Added to the database";
+	        $sqlgetID = "SELECT * FROM `users` WHERE `UserName`='$valUsername'";
+	        $result = $conn->query($sqlgetID);
+	        $row = $result->fetch_assoc();
+
+	        return $row['UsersID'];
 		}
 
 

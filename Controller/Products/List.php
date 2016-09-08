@@ -57,15 +57,28 @@
 	        		<div>Merchant Owner : <?php echo $row['UserName'];?></div>
 	        		<form class="DeleteProduct" action="../Controller/Products/Delete.php" method="post">
 	        			<input type="hidden" name="ProductsID" value="<?php echo $row['ProductsID'];?>"/>
-	        			<button type="submit">DELETE</button>
+	        			<button type="submit" class="btn btn-primary">DELETE</button>
 	        		</form>
 
 	        		<h4>Update Form</h4>
 	        		<form class="UpdateProduct" action="../Controller/Products/Update.php" method="post">
-	        			<input type="hidden" name="ProductsID" value="<?php echo $row['ProductsID'];?>"/>
-	        			<input type="text" name="ProductName" value="<?php echo $row['ProductName']; ?>" placeholder="Product Name"/>
-	        			<input type="text" name="ProductPrice" value="<?php echo $row['ProductPrice']; ?>" placeholder="Product Price"/>
-	        			<input type="text" name="Details" value="<?php echo $row['Details']; ?>" placeholder="Product Details" />
+	        		
+	        			<input type="hidden" name="ProductsID" value="<?php echo $row['ProductsID'];?>" class="form-control"/>
+	        	
+	        		<div class="form-group">
+	        			<label>Product Name</label>
+	        			<input type="text" name="ProductName" value="<?php echo $row['ProductName']; ?>" placeholder="Product Name" class="loginforms"/>
+	        		</div>	
+	        		<div class="form-group">
+	        			<label>Product Price</label>
+	        			<input type="text" name="ProductPrice" value="<?php echo $row['ProductPrice']; ?>" placeholder="Product Price" class=" loginforms"/>
+	        		</div>	
+	        		<div class="form-group">
+	        			<label>Details</label>
+	        			<input type="text" name="Details" value="<?php echo $row['Details']; ?>" placeholder="Product Details" class="loginforms"/>
+	        		</div>	
+	        		<div class="form-group">
+	        			<label>Category</label>
 	        			<select name="Category">
 							<option value="1" <?php if($row['Category'] == 1)echo "selected";?>>MEN-LEATHER</option>
 							<option value="2" <?php if($row['Category'] == 2)echo "selected";?>>MEN-RUBBER SHOES</option>
@@ -78,7 +91,9 @@
 							<option value="9" <?php if($row['Category'] == 9)echo "selected";?>>KIDS-SLIPPERS(GIRLS)</option>
 
 						</select>
-						<button type="submit">UPDATE</button>
+	        		</div>	
+	        			
+						<button type="submit" class="btn btn-primary">UPDATE</button>
 					</form>
 	        	</div>
 
