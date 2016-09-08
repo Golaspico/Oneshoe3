@@ -19,13 +19,7 @@
     <link rel="stylesheet" href="../css/customstyle.css">
     <link rel="stylesheet" href="../css/font-awesome.min.css">
     
-   <style>
-    body
-    {
-        font-family: 'Roboto', sans-serif !important;
-        color:gray;
-    }
-   </style>
+   
 
 </head>
 
@@ -39,7 +33,7 @@
           <span class="icon-bar"></span>
           <span class="icon-bar"></span>
         </button>
-        <a class="navbar-brand" href="../index.php"><img src="../images/headerIMG/logo.png" alt=""></a>
+        <a class="navbar-brand" href="index.php"><img src="../images/headerIMG/logo.png" alt=""></a>
       </div><!-- navbar-header -->
       <div class="collapse navbar-collapse" id="collapse">
 
@@ -106,16 +100,41 @@
 
 <body>
 
-
-<div class="container">
-    <div class="col-md-5" style="margin-top:10%;">
-            <a href="AddItem.php" class="btn btn-primary">Add Item</a>
-        </div>  
-    <div id="ProductList" style="margin-top:10%;" class="col-md-12">
+<div class="productListView"><!-- productListView -->
+    <div class="container">
+        
+        <div class="row" id="productList" style="margin-top:10%;">
             
+            
+
+
+
+        </div>
+
+
     </div>
+
+    <div class="paginationWrapper">
+        <div class="text-center">
+    <ul class="pagination">
+        <li><a href="#" aria-label="Previous"><span aria-hidden="true">«</span></a></li> 
+            <li><a href="#">1</a></li> 
+            <li><a href="#">2</a></li> 
+            <li><a href="#">3</a></li>
+            <li><a href="#">4</a></li> 
+            <li><a href="#">5</a></li> 
+            <li><a href="#" aria-label="Next"><span aria-hidden="true">»</span></a>
+    </ul>
+    </div> 
+        
+    </div> 
+
     
-</div>
+
+</div><!-- end of productListView -->
+
+
+
 
        
 
@@ -127,31 +146,6 @@
 <script type="text/javascript" src="../js/jquery.eislideshow.js"></script>
 <script type="text/javascript" src="../js/jquery.easing.1.3.js"></script>
 <script src="../js/jquery.form.js"></script>
-<script>
-function deleteProduct()
-{
-
-    $(document).ready(function(){
-        $(".DeleteProduct").ajaxForm(function(data){
-            //You need the jquery.form.js to use this
-                // alert(data);
-                console.log(data);
-            //THEN WE RE POPULATE THE PRODUCT LIST AFTER DELETING
-            $.post("../Controller/Products/List.php",
-                    
-                    function(response){
-                    $("#ProductList").html(response);
-                     deleteProduct();
-                     updateProduct(); 
-                });
-            //END OF RE POPULATING WITHOUT REFRESHING.
-                
-        });
-
-    });
-}
-</script>
-<!-- END OF THE DLETE PRODUCT CALL -->
 <script>
   $(document).ready(function(){
 
@@ -173,55 +167,6 @@ function deleteProduct()
     
   });
 </script>
-
-<!-- START OF LISTING THE PRODUCTS -->
-<script>
-    $(document).ready(function(){
-                $.post("../Controller/Products/List.php",
-                    
-                    function(response){
-                    $("#ProductList").html(response);
-                    deleteProduct(); 
-                     updateProduct();
-                   
-                });
-
-          
-
-    });
-</script>
-<!-- END OF LISTING THE PRODUCTS -->
-
-<script>
-function updateProduct()
-{
-    $(document).ready(function(){
-        $(".UpdateProduct").ajaxForm(function(data){
-            //You need the jquery.form.js to use this
-                // alert(data);
-                console.log(data);
-            //THEN WE RE POPULATE THE PRODUCT LIST AFTER DELETING
-            $.post("../Controller/Products/List.php",
-                    
-                    function(response){
-                    $("#ProductList").html(response);
-                     deleteProduct(); 
-                     updateProduct();
-                });
-            //END OF RE POPULATING WITHOUT REFRESHING.
-                
-        });
-
-    });
-}
-</script>
-
-<!-- START OF THE DELETE PRODUCT CALL -->
-<!-- NOTE : NOTICE THE LISTING PRODUCTS JS IS CALLING THE LINE 102 "deleteProduct()" -->
-<!-- THIS IS TO ENSURE THAT WE POPULATE DIV FIRST BEFORE WE DECLARE THE DELETEPRODUCT BELOW -->
-
-
-
 
    
 </body>

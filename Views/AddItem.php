@@ -159,13 +159,13 @@
             <input type="number" name="Size4" class="loginforms" required="required" placeholder="33">
         </div>
 
-        <div class="form-group">
+        <!-- <div class="form-group">
             <select name="Color">
                 <option "1">Black</option>
                 <option "2">White</option>
                 <option "3">Gray</option>
             </select>
-        </div>
+        </div> -->
 
          <input type="file" name="fileToUpload" />
 
@@ -203,6 +203,24 @@
 <script type="text/javascript" src="../js/jquery.eislideshow.js"></script>
 <script type="text/javascript" src="../js/jquery.easing.1.3.js"></script>
 <script src="../js/jquery.form.js"></script>
+
+
+<!-- START OF LISTING THE PRODUCTS -->
+<script>
+    $(document).ready(function(){
+                $.post("../Controller/Products/List.php",
+                    
+                    function(response){
+                    $("#ProductList").html(response);
+                    deleteProduct();
+                    updateProduct();
+                });
+
+          
+
+    });
+</script>
+<!-- END OF LISTING THE PRODUCTS -->
 
 <!-- SCRIPT FOR INSERTING PRODUCTS -->
 <script>
