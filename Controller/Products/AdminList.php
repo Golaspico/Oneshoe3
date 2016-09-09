@@ -13,7 +13,7 @@
                 $sql = "SELECT * FROM `products` JOIN `users` ON products.UsersID=users.UsersID";
             }else if ($_SESSION['Role'] == 2 || $_SESSION['Role'] == 0)
             {
-                $sql = "SELECT * FROM `products` JOIN `users` ON products.UsersID=users.UsersID";
+                $sql = "SELECT * FROM `products` JOIN `users` ON products.UsersID=users.UsersID WHERE products.Status='0'";
             }
 
             
@@ -57,20 +57,26 @@
             {?>
 
                <div class="col-md-3">
-                    <form>
+                    
                     <div><center><img src="<?php echo "../images/uploads/". $row['Image'];?>" alt="thumb01" width="200" height="200"></center></div>
                     <div><center><strong>MERCHANT : </strong><?php echo $row['UserName']?></center></div>
                     <div class="row">
                         <div class="col-md-6">
-                            <button class="col-md-12 btn btn-primary magicbtn"><i class="fa fa-thumbs-o-up" aria-hidden="true"></i> ACCEPT</button>
+                            <form class="admindecissionyes" method="post" action="../Controller/Products/AcceptProduct.php">
+                            <input type="hidden" name="ProductsID" value="<?php echo $row['ProductsID'];?>"/>
+                            <button type="submit" class="col-md-12 btn btn-primary magicbtn"><i class="fa fa-thumbs-o-up" aria-hidden="true"></i> ACCEPT</button>
+                            </form>   
                         </div>
                         <div class="col-md-6">
-                            <button class="col-md-12 btn btn-primary magicbtn"><i class="fa fa-thumbs-o-down" aria-hidden="true"></i> IGNORE</button>
+                        <form class="admindecissionno" method="post" action="../Controller/Products/IgnoreProduct.php">
+                            <input type="hidden" name="ProductsID" value="<?php echo $row['ProductsID'];?>"/>
+                            <button type="submit" class="col-md-12 btn btn-primary magicbtn"><i class="fa fa-thumbs-o-down" aria-hidden="true"></i> IGNORE</button>
+                        </form> 
                         </div>
                     </div>
                     
                     
-                   </form>      
+                      
                </div><!-- mobileCenterView --> 
 
 

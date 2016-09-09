@@ -122,7 +122,7 @@
 ?>
 <div class="container" style="margin-bottom:15px;">
 	<div class="row" style="margin-top:10%;">
-		<center><h2 id ="resultMessage" style="display:none">ITEM UPDATED</h2></center>
+		
 		<div id="ProductList">
 		<form class="UpdateProduct" action="../Controller/Products/Update.php" method="post">
 	        		<div><center><img src="<?php echo "../images/uploads/". $row['Image'];?>" width="200" height="200"></center></div>
@@ -135,7 +135,11 @@
 	        		<div class="form-group">
 	        			<label>Product Price</label>
 	        			<input type="text" name="ProductPrice" value="<?php echo $row['ProductPrice']; ?>" placeholder="Product Price" class=" loginforms"/>
-	        		</div>	
+	        		</div>
+	        		<div class="form-group">
+	        			<label>Stocks</label>
+	        			<input type="text" name="Stocks" value="<?php echo $row['Stocks']; ?>" placeholder="Product Price" class=" loginforms"/>
+	        		</div>		
 	        		<div class="form-group">
 	        			<label>Details</label>
 	        			<input type="text" name="Details" value="<?php echo $row['Details']; ?>" placeholder="Product Details" class="loginforms"/>
@@ -155,7 +159,7 @@
 
 						</select>
 	        		</div>	
-	        			
+	        			<center><h2 id ="resultMessage" style="display:none">ITEM UPDATED</h2></center>
 						<button type="submit" class="btn btn-primary col-xs-12">UPDATE</button>
 </form>
 		</div>
@@ -219,7 +223,7 @@ function updateProduct()
 			       $.post("../Controller/Products/Update.php",
             $(".UpdateProduct").serialize()
             ,function(response){
-            
+            console.log(response);
         });
 
 			         $.post("../Controller/Products/UpdateSingleDiv.php",

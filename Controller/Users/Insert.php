@@ -29,9 +29,9 @@ session_start();
 	$_SESSION['UsersID'] = $myUsersID;
 
 	if($valRole == 0){
-		header("Location: http://localhost/Views/Dashboard.php");
+		header("Location: http://solesearch/Views/Dashboard.php");
 	}else{
-		header("Location: http://localhost/Views/Dashboard2.php");
+		header("Location: http://solesearch/Views/Dashboard2.php");
 	}
 	
 

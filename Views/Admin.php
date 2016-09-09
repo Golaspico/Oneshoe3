@@ -75,7 +75,7 @@
 								<li><a href=""><i class="fa fa-user"></i>Hi : <?php echo $_SESSION['UserName'];?></a></li>
 								<li><a href="Dashboard.php"><i class="fa fa-briefcase"></i>Dashboard</a></li>
 								<li><a href=""><i class="fa fa-calendar-o"></i>Reports</a></li>
-								<li><a href="logout_sucess.php"><i class="fa fa-lock"></i>Logout</a></li>
+								<li><a href="../Controller/Authentication/Logout.php"><i class="fa fa-lock"></i>Logout</a></li>
 								</ul>
 
 								</div><!--/dropdownmenu-->		
@@ -159,7 +159,8 @@
                 
                 function(response){
                 $("#productList").html(response);
-              
+                    deleteProduct();
+                     updateProduct();
             });
             //End of Repopulating
    
@@ -168,6 +169,55 @@
   });
 </script>
 
+<script>
+function deleteProduct()
+{
+
+    $(document).ready(function(){
+        $(".admindecissionno").ajaxForm(function(data){
+            //You need the jquery.form.js to use this
+                // alert(data);
+                console.log(data);
+            //THEN WE RE POPULATE THE PRODUCT LIST AFTER DELETING
+            $.post("../Controller/Products/AdminList.php",
+                    
+                    function(response){
+                    $("#productList").html(response);
+                     deleteProduct();
+                     updateProduct();
+                     
+                });
+            //END OF RE POPULATING WITHOUT REFRESHING.
+                
+        });
+
+    });
+}
+</script>
+
+<script>
+function updateProduct()
+{
+    $(document).ready(function(){
+        $(".admindecissionyes").ajaxForm(function(data){
+            //You need the jquery.form.js to use this
+                // alert(data);
+                console.log(data);
+            //THEN WE RE POPULATE THE PRODUCT LIST AFTER DELETING
+            $.post("../Controller/Products/AdminList.php",
+                    
+                    function(response){
+                    $("#productList").html(response);
+                     deleteProduct(); 
+                     updateProduct();
+                });
+            //END OF RE POPULATING WITHOUT REFRESHING.
+                
+        });
+
+    });
+}
+</script>
    
 </body>
 </html>

@@ -58,7 +58,7 @@
 
 
           <li class="ctmHighlight"><a href="#" class="navTitles">Login</a></li>
-          <li class="ctmHighlight"><a href="#" class="navTitles">Sign Up</a></li>
+          <li class="ctmHighlight"><a href="Register.php" class="navTitles">Sign Up</a></li>
           <li class="ctmHighlight"><a href="#" class="navTitles">About Us</a></li>         
         </ul>        
       </div><!-- collapse navbar-collapse -->
@@ -92,7 +92,7 @@
             </form>
                 <br>
                 <a href="#">Already a member?</a><br>
-                <a href="#">Not yet a member?</a>
+                <a href="Register.php">Not yet a member?</a>
         </div>
     </div>
 </div>

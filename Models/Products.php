@@ -160,6 +160,21 @@
 
 		}
 
+		public function productIgnore($valProductID)
+		{
+				$servername = "127.0.0.1";
+				$username = "root";
+				$password = "";
+				$dbname = "oneshoe";
+
+				$conn = new mysqli($servername, $username, $password,$dbname);
+
+				$sql = "DELETE FROM products WHERE `ProductsID`='$valProductID'";
+				$conn->query($sql);
+
+				return "Ignored";
+		}
+
 
 
 		public function deleteProduct($valProductID)
@@ -177,7 +192,7 @@
 				return "Deleted";
 		}
 
-		public function updateProduct($valProductID,$valProductName,$valProductPrice,$valCategory,$valDetails)
+		public function updateProduct($valProductID,$valProductName,$valProductPrice,$valCategory,$valDetails,$valStocks)
 		{
 				$servername = "127.0.0.1";
 				$username = "root";
@@ -186,11 +201,27 @@
 
 				$conn = new mysqli($servername, $username, $password,$dbname);
 
-				$sql = "UPDATE `products` SET `ProductName`='$valProductName',`ProductPrice`='$valProductPrice',`Category`='$valCategory',`Details`='$valDetails' WHERE `ProductsID`='$valProductID'";
+				$sql = "UPDATE `products` SET `ProductName`='$valProductName',`ProductPrice`='$valProductPrice',`Category`='$valCategory',`Details`='$valDetails',`Stocks`='$valStocks' WHERE `ProductsID`='$valProductID'";
 
 				$conn->query($sql);
 
 				return "Updated Products";
+		}
+
+		public function acceptProduct($valProductID)
+		{
+				$servername = "127.0.0.1";
+				$username = "root";
+				$password = "";
+				$dbname = "oneshoe";
+
+				$conn = new mysqli($servername, $username, $password,$dbname);
+
+				$sql = "UPDATE `products` SET `Status`='1' WHERE `ProductsID`='$valProductID'";
+
+				$conn->query($sql);
+
+				return "Accepted Products";
 		}
 	}
 

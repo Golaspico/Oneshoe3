@@ -13,7 +13,7 @@ error_reporting(E_ALL);
 	        session_start();
 	        $UsersID = $_SESSION['UsersID'];
 
-	        $sql = "SELECT * FROM `products` JOIN `users` ON products.UsersID=users.UsersID WHERE users.UsersID='1'";
+	        $sql = "SELECT * FROM `products` JOIN `users` ON products.UsersID=users.UsersID WHERE users.UsersID='$UsersID'";
 	        $result = $conn->query($sql);
 
 	        function changeCategory($val1)
