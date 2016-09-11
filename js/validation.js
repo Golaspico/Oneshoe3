@@ -85,7 +85,7 @@ $(function(){
                 Email:{
                     required: 'Please enter an email address',
                     email:'Please enter a <em>valid</em> email',
-                    remote: $.validator.format("{0} is already associated with an account")
+                    remote: jQuery.validator.format("{0} is already taken.")
 
                 },
 
