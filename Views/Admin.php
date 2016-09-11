@@ -72,8 +72,16 @@
 					<button class="btn btn-primary dropdown-toggle" type="button" data-toggle="dropdown">Account
 								<span class="caret"></span></button>
 								<ul class="dropdown-menu">
-								<li><a href=""><i class="fa fa-user"></i>Hi : <?php echo $_SESSION['UserName'];?></a></li>
-								<li><a href="Dashboard.php"><i class="fa fa-briefcase"></i>Dashboard</a></li>
+								<li><a href="UserUpdate.php"><i class="fa fa-user"></i>Hi : <?php echo $_SESSION['UserName'];?></a></li>
+								<?php if($_SESSION['Role'] == 2){?>
+                                    <li><a href="Admin.php"><i class="fa fa-briefcase"></i>Dashboard</a></li>
+                                <?php }?>
+                                <?php if($_SESSION['Role'] == 1){?>
+                                    <li><a href="Dashboard2.php"><i class="fa fa-briefcase"></i>Dashboard</a></li>
+                                <?php }?>
+                                <?php if($_SESSION['Role'] == 0){?>
+                                    <li><a href="Dashboard.php"><i class="fa fa-briefcase"></i>Dashboard</a></li>
+                                <?php }?>
 								<li><a href=""><i class="fa fa-calendar-o"></i>Reports</a></li>
 								<li><a href="../Controller/Authentication/Logout.php"><i class="fa fa-lock"></i>Logout</a></li>
 								</ul>
