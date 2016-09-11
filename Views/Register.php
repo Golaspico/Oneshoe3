@@ -93,7 +93,7 @@
                     <input type="email" name="Email" placeholder="Email Address" class="loginforms">
                 </div>    
                  <div class="form-group">
-                    <input type="password" name="Password" placeholder="Password" class="loginforms">
+                    <input type="password" name="Password" id="Password" placeholder="Password" class="loginforms">
                 </div>    
                  <div class="form-group">
                     <input type="password" name="Password2" placeholder="Retype Password" class="loginforms">
@@ -301,7 +301,10 @@
 <script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1.7.0/jquery.min.js"></script>
 <script type="text/javascript" src="../js/jquery.eislideshow.js"></script>
 <script type="text/javascript" src="../js/jquery.easing.1.3.js"></script>
-<!-- <script src="../js/validation.js"></script> -->
+<script src="../js/jquery.validate.min.js"></script>
+<script src="http://ajax.aspnetcdn.com/ajax/jquery.validate/1.11.1/additional-methods.min.js"></script>
+<script src="../js/validation.js"></script>
+
 
 <!-- START OF LOG IN SCRIPT -->
 <!-- <script>

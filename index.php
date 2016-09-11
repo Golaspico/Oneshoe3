@@ -69,7 +69,7 @@
             </li>  
 
             <li class="ctmHighlight">
-                <a href="#"><i class="fa fa-shopping-cart fa-2x" aria-hidden="true"><span class="badge badge" id="cartcounter"></span></i></a>
+                <a href="#"><i class="fa fa-shopping-cart fa-2x" aria-hidden="true"><span class="badge badge" id="cartcounter" style="background-color:red;">12</span></i></a>
             </li>
             <li>
               <div class=""><!--/dropdownmenu-->

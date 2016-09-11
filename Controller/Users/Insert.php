@@ -22,7 +22,7 @@ session_start();
 	// $encoded = json_encode($encode);
 	// echo $encoded;
 
-
+	$valEmail = strtolower($valEmail);
 	$myUsersID = $USERS->insertUser($valUsername,$valPassword,$valAddress,$valEmail,$valFullname,$valRole);
 
 	$_SESSION['UserName'] = $valUsername;

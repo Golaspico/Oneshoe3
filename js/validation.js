@@ -5,21 +5,21 @@
 
 $(function(){
 
-    // $.validator.setDefaults({
-    //     errorClass: 'help-block',
-    //     highlight: function(element){
-    //         $(element)
-    //             .closest('.form-group')
-    //             .addClass('has-error');
-    //     },
-    //     unhighlight: function(element){
-    //         $(element)
-    //             .closest('.form-group')
-    //             .removeClass('has-error');
-    //     }
+    $.validator.setDefaults({
+        errorClass: 'help-block',
+        highlight: function(element){
+            $(element)
+                .closest('.form-group')
+                .addClass('has-error');
+        },
+        unhighlight: function(element){
+            $(element)
+                .closest('.form-group')
+                .removeClass('has-error');
+        }
 
 
-    // });
+    });
 
     $.validator.addMethod('strongPassword',function(value,element){
         return this.optional(element)
@@ -34,7 +34,7 @@ $(function(){
 
 
 
-    $("#register-form").validate({
+    $("#loginForm").validate({
         submitHandler: function(form) {
             if ($(form).valid())
                 form.submit();
@@ -45,18 +45,18 @@ $(function(){
                 required:true,
                 email:true,
 
-                // remote:
-                // {
-                //     url: '../Encrypt/registerResponse.php',
-                //     type: "post",
-                //     data:
-                //     {
-                //         email: function()
-                //         {
-                //             return $('#register-form :input[name="email"]').val();
-                //         }
-                //     }
-                // }
+                remote:
+                {
+                    url: '../Controller/Authentication/ValidateUser.php',
+                    type: "post",
+                    data:
+                    {
+                        email: function()
+                        {
+                            return $('#loginForm :input[name="Email"]').val();
+                        }
+                    }
+                }
 
             },
             Password:{
@@ -65,7 +65,7 @@ $(function(){
             },
             Password2:{
                 required:true,
-                equalTo:"#password1"
+                equalTo:"#Password"
             },
 
             FullName:{
@@ -82,14 +82,14 @@ $(function(){
         },
 
             messages:{
-                email:{
+                Email:{
                     required: 'Please enter an email address',
                     email:'Please enter a <em>valid</em> email',
                     remote: $.validator.format("{0} is already associated with an account")
 
                 },
 
-                address:{
+                Address:{
                     minlength: 'Address is too short'
                 }
             }
