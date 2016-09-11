@@ -1,3 +1,8 @@
+<?php 
+    session_start();
+  
+?>
+
 <!DOCTYPE html>
 <html>
 <head>	
@@ -11,6 +16,7 @@
     <link rel="stylesheet" href="css/main.css">
     <link rel="stylesheet" href="css/chris.css">
     <link rel="stylesheet" href="css/customstyle.css">
+    <link rel="stylesheet" href="css/font-awesome.min.css">
 
 
 <style>
@@ -23,7 +29,88 @@
 </head>
 <body>
  <header>
-  <nav class="navbar navbar-default navbar-fixed-top" role="navigation">
+
+ <?php if(isset($_SESSION['UserName']))
+ {?>
+    <nav class="navbar navbar-default navbar-fixed-top" role="navigation">
+    <div class="container">
+      <div class="navbar-header">
+        <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#collapse">
+          <span class="sr-only">Toggle navigation</span>
+          <span class="icon-bar"></span>
+          <span class="icon-bar"></span>
+          <span class="icon-bar"></span>
+        </button>
+        <a class="navbar-brand" href="index.php"><img src="../images/headerIMG/logo.png" alt=""></a>
+      </div><!-- navbar-header -->
+      <div class="collapse navbar-collapse" id="collapse">
+
+        <ul class="nav navbar-nav navbar-right moveDown">
+         <li class="dropdown ctmHighlight"><a href="#" class="navTitles">Men<i class="glyphicon glyphicon-menu-down"></i></a>
+                <ul role="menu" class="sub-menu">
+                    <li><a href="Mleather.php" >Leather</a></li>
+                    <li><a href="MRubbershoes.php">Rubber Shoes</a></li> 
+                    <li><a href="MSlippers.php">Slippers</a></li> 
+                </ul>
+            </li>    
+            <li class="dropdown ctmHighlight"><a href="#" class="navTitles">Women<i class="glyphicon glyphicon-menu-down"></i></a>
+                <ul role="menu" class="sub-menu">
+                    <li><a href="WFlats.php">Flats</a></li>
+                    <li><a href="WHeels.php">Heels</a></li> 
+                    <li><a href="WWedge.php">Wedge</a></li> 
+                </ul>
+            </li>    
+            <li class="dropdown ctmHighlight"><a href="#" class="navTitles">Kids<i class="glyphicon glyphicon-menu-down"></i></a>
+                <ul role="menu" class="sub-menu">
+                    <li><a href="KRubbershoes.php">Rubber Shoes</a></li>
+                    <li><a href="KSlippersB.php">Slippers (Boys) </a></li> 
+                    <li><a href="KFlatsG.php">Flats (Girls) </a></li> 
+                </ul>
+            </li>  
+
+            <li class="ctmHighlight">
+                <a href="#"><i class="fa fa-shopping-cart fa-2x" aria-hidden="true"><span class="badge badge" id="cartcounter"></span></i></a>
+            </li>
+            <li>
+              <div class=""><!--/dropdownmenu-->
+                    
+                        <div class="shop-menu pull-right">
+                        <div class="dropdown">
+
+                            
+    
+
+    
+                    <button class="btn btn-primary dropdown-toggle" type="button" data-toggle="dropdown">Account
+                                <span class="caret"></span></button>
+                                <ul class="dropdown-menu" style="left:-70px;">
+                                <li><a href="UserUpdate.php"><i class="fa fa-user"></i>Hi : <?php echo $_SESSION['UserName'];?></a></li>
+                                <?php if($_SESSION['Role'] == 2){?>
+                                    <li><a href="Admin.php"><i class="fa fa-briefcase"></i>Dashboard</a></li>
+                                <?php }?>
+                                <?php if($_SESSION['Role'] == 1){?>
+                                    <li><a href="Dashboard2.php"><i class="fa fa-briefcase"></i>Dashboard</a></li>
+                                <?php }?>
+                                <?php if($_SESSION['Role'] == 0){?>
+                                    <li><a href="Dashboard.php"><i class="fa fa-briefcase"></i>Dashboard</a></li>
+                                <?php }?>
+                                <li><a href=""><i class="fa fa-calendar-o"></i>Reports</a></li>
+                                <li><a href="../Controller/Authentication/Logout.php"><i class="fa fa-lock"></i>Logout</a></li>
+                                </ul>
+
+                                </div><!--/dropdownmenu-->      
+                        </div>
+                    </div>
+            </li>
+          
+                
+        </ul>        
+      </div><!-- collapse navbar-collapse -->
+    </div><!-- container -->
+  </nav>
+ <?php }else
+ {?>
+    <nav class="navbar navbar-default navbar-fixed-top" role="navigation">
     <div class="container">
       <div class="navbar-header">
         <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#collapse">
@@ -67,6 +154,9 @@
       </div><!-- collapse navbar-collapse -->
     </div><!-- container -->
   </nav>
+
+<?php }?>
+  
   
 
 
@@ -138,7 +228,9 @@
 </div>    
 
 </header>
+
 <div class="container">
+
         <div class="productListView" id="productListView"><!-- productListView -->
         
             
@@ -185,42 +277,38 @@
             });
         </script>
 
- <script>
- $(document).ready(function(){
+<?php 
+    if(isset($_SESSION['UserName']))
+    {?>
+        <script>
+         $(document).ready(function(){
 
-        $.post("Controller/Products/PurchasableItemList.php",
-            {"status":"index"},
-            function(response){
-            $("#productListView").html(response);
-            updateProduct();
-        });
-
- });
- </script>
-
-
- <script>
-function updateProduct()
-{
-    $(document).ready(function(){
-        $(".indexform").submit(function(data){
-            //You need the jquery.form.js to use this
-                // alert(data);
-                console.log(data);
-            //THEN WE RE POPULATE THE PRODUCT LIST AFTER DELETING
-            $.post("../Controller/Products/List.php",
-                    
+                $.post("Controller/Products/PurchasableItemList.php",
+                   
                     function(response){
-                    $("#ProductList").html(response);
-                     deleteProduct(); 
-                     updateProduct();
+                    $("#productListView").html(response);
+                    
                 });
-            //END OF RE POPULATING WITHOUT REFRESHING.
-                
-        });
 
-    });
-}
-</script>
+         });
+         </script>
+    <?php }else{
+
+?>
+ <script>
+         $(document).ready(function(){
+
+                $.post("Controller/Products/PurchasableItemList.php",
+                   {"status":"index"},
+                    function(response){
+                    $("#productListView").html(response);
+                    
+                });
+
+         });
+         </script>
+
+<?php }?>
+
 </body>
 </html>

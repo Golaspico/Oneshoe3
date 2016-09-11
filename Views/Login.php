@@ -140,7 +140,7 @@
                                      if(result.Role == "0"){
                                         setTimeout(function(){
                                           //do something special
-                                          window.location.replace("Dashboard.php");
+                                          window.location.replace("../index.php");
                                         }, 2000);     
                                      }else if(result.Role == "1"){
                                         setTimeout(function(){
