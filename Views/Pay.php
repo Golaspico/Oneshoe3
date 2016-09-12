@@ -60,7 +60,7 @@ if(isset($_GET['approved']))
 
 	$paymentId = $PaymentID->fetchObject()->PaymentID;
 
-	
+
 	$payment = Payment::get($paymentId, $api);
 	$execution = new PaymentExecution();
 	$execution->setPayerId($payerId);
@@ -70,12 +70,27 @@ if(isset($_GET['approved']))
 
 	$payment->execute($execution,$api);
 
-	echo $payerId;
+	require_once $_SERVER['DOCUMENT_ROOT'] .("/Models/Order.php");
+
+	// 		$servername = "127.0.0.1";
+	//         $username = "root";
+	//         $password = "";
+	//         $dbname = "oneshoe";
+
+	// $conn = new mysqli($servername, $username, $password,$dbname);
+	// $sql1 = "SELECT * F"
+
+	$valUsersID = $_SESSION['UsersID'];
+	$valStatus = 1;
+	$valMessage = "Completed";
+	$orderid = $ORDER->insertOrder($valUsersID,$valStatus,$valMessage);
+
+	header('Location: Payment.php?status=complete');
+
 
 	
-	
 	} else{
-		header('Location: Canceled.php');
+		header('Location: Payment.php?status=canceled');
 	}
 
 

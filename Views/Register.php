@@ -33,33 +33,33 @@
       </div><!-- navbar-header -->
       <div class="collapse navbar-collapse" id="collapse">
 
-        <ul class="nav navbar-nav navbar-right moveDown">
+         <ul class="nav navbar-nav navbar-right moveDown">
             <li class="dropdown ctmHighlight"><a href="#" class="navTitles">Men<i class="glyphicon glyphicon-menu-down"></i></a>
                 <ul role="menu" class="sub-menu">
-                    <li><a href="Mleather.php" >Leather</a></li>
-                    <li><a href="MRubbershoes.php">Rubber Shoes</a></li> 
-                    <li><a href="MSlippers.php">Slippers</a></li> 
+                    <li><a href="../Mleather.php" >Leather</a></li>
+                    <li><a href="../MRubbershoes.php">Rubber Shoes</a></li> 
+                    <li><a href="../MSlippers.php">Slippers</a></li> 
                 </ul>
             </li>    
             <li class="dropdown ctmHighlight"><a href="#" class="navTitles">Women<i class="glyphicon glyphicon-menu-down"></i></a>
                 <ul role="menu" class="sub-menu">
-                    <li><a href="WFlats.php">Flats</a></li>
-                    <li><a href="WHeels.php">Heels</a></li> 
-                    <li><a href="WWedge.php">Wedge</a></li> 
+                    <li><a href="../WFlats.php">Flats</a></li>
+                    <li><a href="../WHeels.php">Heels</a></li> 
+                    <li><a href="../WWedge.php">Wedge</a></li> 
                 </ul>
             </li>    
             <li class="dropdown ctmHighlight"><a href="#" class="navTitles">Kids<i class="glyphicon glyphicon-menu-down"></i></a>
                 <ul role="menu" class="sub-menu">
-                    <li><a href="KRubbershoes.php">Rubber Shoes</a></li>
-                    <li><a href="KSlippersB.php">Slippers (Boys) </a></li> 
-                    <li><a href="KFlatsG.php">Flats (Girls) </a></li> 
+                    <li><a href="../KRubbershoes.php">Rubber Shoes</a></li>
+                    <li><a href="../KSlippersB.php">Slippers (Boys) </a></li> 
+                    <li><a href="../KFlatsG.php">Flats (Girls) </a></li> 
                 </ul>
             </li>  
 
 
           <li class="ctmHighlight"><a href="Login.php" class="navTitles">Login</a></li>
           <li class="ctmHighlight"><a href="Register.php" class="navTitles">Sign Up</a></li>
-          <li class="ctmHighlight"><a href="#" class="navTitles">About Us</a></li>         
+          <li class="ctmHighlight"><a href="Aboutus.php" class="navTitles">About Us</a></li>         
         </ul>        
       </div><!-- collapse navbar-collapse -->
     </div><!-- container -->

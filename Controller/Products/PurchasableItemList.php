@@ -57,10 +57,18 @@
 
 	        if(isset($mode))
 	        {
-	        	$sql = "SELECT * FROM `products` WHERE `Stocks`!='0' AND `Status`!='0' AND `Category`='$mode'";
+	        	$sql = "SELECT * FROM `products` WHERE `Stocks`!='0' AND `Status`!='0' AND `Category`='$mode' LIMIT 8";
 	        }else
 	        {
-	        	$sql = "SELECT * FROM `products` WHERE `Stocks`!='0' AND `Status`!='0'";
+	        	$sql = "SELECT * FROM `products` WHERE `Stocks`!='0' AND `Status`!='0' LIMIT 8";
+	        }
+
+	        if(isset($_POST['Search']))
+	        {
+	        	$mysearch = $_POST['Search'];
+	        	$sql = "SELECT * FROM `products` WHERE `Stocks`!='0' AND `Status`!='0' AND `Details` LIKE '$mysearch%'";
+
+
 	        }
 
 	        $result = $conn->query($sql);

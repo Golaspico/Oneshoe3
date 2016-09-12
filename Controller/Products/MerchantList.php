@@ -70,6 +70,10 @@ error_reporting(E_ALL);
 
 	        		
 	        		<center><a href="ItemUpdate.php?encrypt=<?php echo $row['ProductsID'];?>" class="btn btn-primary col-xs-12">UPDATE</a></center>
+	        		<form action="../Controller/Products/Delete.php" method="post" class="todelete">
+	        			<input type="hidden" name="ProductsID" value="<?php echo $row['ProductsID'];?>" />
+	        			<button type="submit" class="btn btn-primary magicbtn col-xs-12" style="background-color:red;" >DELETE</button>
+	        		</form>
 	        	</div>
 
 

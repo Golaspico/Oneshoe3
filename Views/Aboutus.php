@@ -59,7 +59,7 @@
 
           <li class="ctmHighlight"><a href="#" class="navTitles">Login</a></li>
           <li class="ctmHighlight"><a href="Register.php" class="navTitles">Sign Up</a></li>
-          <li class="ctmHighlight"><a href="Aboutus.php" class="navTitles">About Us</a></li>         
+          <li class="ctmHighlight"><a href="#" class="navTitles">About Us</a></li>         
         </ul>        
       </div><!-- collapse navbar-collapse -->
     </div><!-- container -->
@@ -77,22 +77,35 @@
 <body>
 
 <div class="container">
-    <div class="row goingDown">
-        <div class="col-md-5">
-            <form method="post" id="loginForm">
-                <div class="form-group">
-                    <input type="email" name="Email" placeholder="Email Address" class="loginforms">
-                </div>    
-                    
-                <div class="form-group">
-                    <input type="password" name="Password" placeholder="Password" class="loginforms">
-                </div> 
-                  
-                <button type="Submit" class="btn btn-primary magicbtn">Log In</button>
-            </form>
-                <br>
-                <a href="Register.php">Not yet a member?</a>
-        </div>
+    <div class="row" style="margin-top:70px;">
+      <center>
+       <div class="col-xs-12">
+          
+          <p>Sole searching? SoleSearchPH.com is here. SoleSearchPH.com is an online shoe market that offers convenience to both the customers and the local stores. We promote locally-made footwears from different local stores online in which we let them post and sell their products freely.</p>
+       </div>
+       <div class="col-xs-12">
+          <h2>MISSION</h2>
+          <p>Our Mission is to promote the products from the local small businesses in the shoe industry</p>
+       </div>
+       <div class="col-xs-12">
+          <h2>VISION</h2>
+          <p>Solesearch PH will be a medium for every local shoe store's success i the market.</p>
+
+       </div>
+       </center>
+        <div class="col-xs-12">
+
+        <center><img src="../images/aboutus/pic1.PNG" class="img img-circle imagecircle" width="100" height="100"></center>
+        <center><p>Madrona, Stephen King Daniel</p></center>
+        <center><img src="../images/aboutus/pic2.PNG" class="img img-circle imagecircle" width="100" height="100"></center>
+        <center><p>Labrague, Bea Marie</p></center>
+        <center><img src="../images/aboutus/pic3.PNG" class="img img-circle imagecircle" width="100" height="100"></center>
+        <center><p>Maala, Jonna Rose</p></center>
+        <center><img src="../images/aboutus/pic4.PNG" class="img img-circle imagecircle" width="100" height="100"></center>
+        <center><p>Gabillo, Christian Paul</p></center>
+        <center><img src="../images/aboutus/pic5.PNG" class="img img-circle imagecircle" width="100" height="100"></center>
+        <center><p>Boa, Rose Ann</p></center>
+       </div>
     </div>
 </div>
 <center><h2><span id="StatusMessage" style="display:none;"></span></h2></center>
@@ -100,7 +113,10 @@
 
 
 
-       
+<footer class="footer">
+  <p>SoleSearchPH.com by A-Team</p>
+  <p>Jose Rizal University</p>
+</footer>       
 
 
 

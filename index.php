@@ -47,9 +47,13 @@
         </button>
         <a class="navbar-brand" href="index.php"><img src="../images/headerIMG/logo.png" alt=""></a>
       </div><!-- navbar-header -->
+
       <div class="collapse navbar-collapse" id="collapse">
 
         <ul class="nav navbar-nav navbar-right moveDown">
+         <li><form action="Controller/Products/PurchasableItemList.php" id="SearchForm" method="post">    
+                <input type="text" placeholder="SEARCH" name="Search" id="Search" class="loginforms" style="margin-top:10px;"/>
+            </form></li>   
          <li class="dropdown ctmHighlight"><a href="#" class="navTitles">Men<i class="glyphicon glyphicon-menu-down"></i></a>
                 <ul role="menu" class="sub-menu">
                     <li><a href="Mleather.php" >Leather</a></li>
@@ -91,14 +95,16 @@
                                 <li><a href="Views/UserUpdate.php"><i class="fa fa-user"></i>Hi : <?php echo $_SESSION['UserName'];?></a></li>
                                 <?php if($_SESSION['Role'] == 2){?>
                                     <li><a href="Views/Admin.php"><i class="fa fa-briefcase"></i>Dashboard</a></li>
+                                    <li><a href=""><i class="fa fa-calendar-o"></i>Reports</a></li>
                                 <?php }?>
                                 <?php if($_SESSION['Role'] == 1){?>
                                     <li><a href="Views/Dashboard2.php"><i class="fa fa-briefcase"></i>Dashboard</a></li>
+                                    <li><a href=""><i class="fa fa-calendar-o"></i>Reports</a></li>
                                 <?php }?>
                                 <?php if($_SESSION['Role'] == 0){?>
-                                    <li><a href="Views/Dashboard.php"><i class="fa fa-briefcase"></i>Dashboard</a></li>
+                                    
                                 <?php }?>
-                                <li><a href=""><i class="fa fa-calendar-o"></i>Reports</a></li>
+                                
                                 <li><a href="../Controller/Authentication/Logout.php"><i class="fa fa-lock"></i>Logout</a></li>
                                 </ul>
 
@@ -128,6 +134,11 @@
       <div class="collapse navbar-collapse" id="collapse">
 
         <ul class="nav navbar-nav navbar-right moveDown">
+            <li>
+            <form action="Controller/Products/PurchasableItemList.php" id="SearchForm" method="post">    
+                <input type="text" placeholder="SEARCH" name="Search" id="Search" class="loginforms" style="margin-top:10px;"/>
+            </form>
+            </li>
             <li class="dropdown ctmHighlight"><a href="#" class="navTitles">Men<i class="glyphicon glyphicon-menu-down"></i></a>
                 <ul role="menu" class="sub-menu">
                     <li><a href="Mleather.php" >Leather</a></li>
@@ -376,6 +387,23 @@
 
          });
          </script>
+
+<script>
+$(document).ready(function(){
+       $("#SearchForm").on('input',function(){
+        var mySearch = $("#Search").val();
+        $.post("Controller/Products/PurchasableItemList.php",
+                   {"Search" : mySearch},
+                    function(response){
+                    $("#productListView").html(response);
+                    
+                });
+
+        return false;
+       });
+
+    });
+</script>
 
 <?php }?>
 

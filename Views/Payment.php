@@ -82,10 +82,13 @@
 
 
 <body>
+<?php 
+  session_start();
+?> 
 
 <div class="container">
     <div class="row goingDown">
-      <!--   <div class="col-xs-6 col-xs-offset-3">
+        <div class="col-xs-6 col-xs-offset-3" id="orderform" style="display:none;">
           <div class="panel panel-default">
               <div class="panel-header">
                 <center><h4>ORDER REVIEW</h4></center>
@@ -104,26 +107,52 @@
                         </tr>
                     </thead>
                     <tbody class="table-striped">
+                      <?php 
+                        $servername = "127.0.0.1";
+                        $username = "root";
+                        $password = "";
+                        $dbname = "oneshoe";
+                        // Create connection
+                        $conn = new mysqli($servername, $username, $password,$dbname);
+                        
+                        $myUserID = $_SESSION['UsersID'];
+                        $sql = "SELECT * FROM `carts` JOIN `products` ON carts.ProductsID=products.ProductsID WHERE carts.UsersID='$myUserID'";
+
+                        $result = $conn->query($sql);
+                        $Total = 0;
+                        while($row = $result->fetch_assoc())
+                        {
+                        $Total = $Total + $row['TotalAmount'];
+                      ?>
                       <tr>
-                        <td>MINIONS</td>
-                        <td>3</td>
-                        <td>32</td>
-                        <td>BLACK</td>
-                        <td>PHP 4</td>
-                        <td>3500</td>
+                        <td><?php echo $row['ProductName'];?></td>
+                        <td><?php echo $row['Amount'];?></td>
+                        <td><?php echo $row['SizesID'];?></td>
+                        <td><?php echo $row['Color'];?></td>
+                        <td><?php echo $row['Price'];?></td>
+                        <td>PHP <?php echo $row['TotalAmount'];?></td>
+                      </tr>
+                      <?php } ?>
+                      <tr>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                        <td><span style="font-weight:bold; font-size:12px;">PHP <?php echo $Total;?></span></td>
                       </tr>
                     </tbody>
                   </table>
                   <div class="col-xs-12">
-                    <center><button class="btn btn-primary magicbtn"><span style="color:black;"><i class="fa fa-paypal" aria-hidden="true"></i></span> PROCEED TO PAYMENT</button></center>
+                    <center><a href="PaypalPayments.php" class="btn btn-primary magicbtn"><span style="color:black;"><i class="fa fa-paypal" aria-hidden="true"></i></span> PROCEED TO PAYMENT</a></center>
                   </div>
               </div>
           </div>
-        </div> -->
+        </div>
 
 
 
-          <!-- <div class="col-xs-6 col-xs-offset-3">
+          <div class="col-xs-6 col-xs-offset-3" id="shippingform" style="display:none;">
           <div class="panel panel-default">
               <div class="panel-header">
                 <center><h4>SHIPPING</h4></center>
@@ -138,14 +167,14 @@
                   <p style="color:red;">** Shipping address should be NCR based only.</p>
                   <footer> 2016 Philippines <cite title="Source Title">SoleSearchPh.com</cite></footer>
                 </blockquote>
-                    <center><button class="btn btn-primary magicbtn"><span style="color:black;"><i class="fa fa-angle-right fa-lg" aria-hidden="true"></i></span> NEXT</button></center>
+                    <center><button id="next" class="btn btn-primary magicbtn"><span style="color:black;"><i class="fa fa-angle-right fa-lg" aria-hidden="true"></i></span> NEXT</button></center>
                   </div>
               </div>
           </div>
-        </div> -->
+        </div>
 
 
-        <div class="col-xs-6 col-xs-offset-3">
+        <div class="col-xs-6 col-xs-offset-3" id="completeform" style="display:none;">
           <div class="panel panel-default">
               <div class="panel-header">
                 <center><h4>ORDER COMPLETE</h4></center>
@@ -156,10 +185,31 @@
                  
                   <div class="col-xs-12">
                   <blockquote>
-                  <p style="color:red;">** Shipping address should be NCR based only.</p>
+                  <p style="color:red;">** Email has been sent. Kindly check.</p>
                   <footer> 2016 Philippines <cite title="Source Title">SoleSearchPh.com</cite></footer>
                 </blockquote>
-                    <center><button class="btn btn-primary magicbtn"><span style="color:white;"><i class="fa fa-check fa-lg" aria-hidden="true"></i></span> OK</button></center>
+                    <center><a href="../index.php" class="btn btn-primary magicbtn"><span style="color:white;"><i class="fa fa-check fa-lg" aria-hidden="true"></i></span> OK</a></center>
+                  </div>
+              </div>
+          </div>
+        </div>
+
+
+        <div class="col-xs-6 col-xs-offset-3" id="cancelform" style="display:none;">
+          <div class="panel panel-default">
+              <div class="panel-header">
+                <center><h4>ORDER CANCELED</h4></center>
+              </div>
+              <div class="panel-body">
+
+                  <center><span style="color:red;"><i class="fa fa-times fa-5x" aria-hidden="true"></i></span></center>
+                 
+                  <div class="col-xs-12">
+                  <blockquote>
+                  <p style="color:red;">** Ordered has been canceled. Current cart is still active.</p>
+                  <footer> 2016 Philippines <cite title="Source Title">SoleSearchPh.com</cite></footer>
+                </blockquote>
+                    <center><a href="Cart.php" class="btn btn-primary magicbtn"><span style="color:white;"><i class="fa fa-check fa-lg" aria-hidden="true"></i></span> BACK TO CART</a></center>
                   </div>
               </div>
           </div>
@@ -241,6 +291,49 @@
 
     });
 </script>
+<?php 
+  if(isset($_GET['status']))
+  {
+    $mystatus = $_GET['status'];
+  }else{ ?> 
+    <script>
+  $(document).ready(function(){
+      $("#shippingform").fadeIn(1000);  
+      $("#next").on('click',function(){
+          $("#shippingform").fadeOut(1000);  
+          $("#orderform").fadeIn(1000);
+      });
+  });
+
+</script>
+
+
+
+  <?php }
+
+  if(isset($_GET['status'])){
+  if($mystatus == "canceled"){
+
+?>
+<script>
+  $(document).ready(function(){
+      $("#cancelform").fadeIn(1000);  
+    
+  });
+
+</script>
+<?php }else if($mystatus == "complete"){ ?>
+<script>
+  $(document).ready(function(){
+      $("#completeform").fadeIn(1000);  
+     
+  });
+
+</script>
+
+
+<?php } }?>
+
 
 <!-- END OF LOG IN SCRIPT -->
    

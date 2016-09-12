@@ -28,8 +28,11 @@ session_start();
 	$_SESSION['UserName'] = $valUsername;
 	$_SESSION['UsersID'] = $myUsersID;
 
+
+	
+	$_SESSION['Role'] = $myResult['Role'];
 	if($valRole == 0){
-		header("Location: http://solesearch/Views/Dashboard.php");
+		header("Location: http://solesearch/index.php");
 	}else{
 		header("Location: http://solesearch/Views/Dashboard2.php");
 	}

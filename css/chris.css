@@ -81,3 +81,18 @@ body
 body{
     padding-bottom: 30px;
 }
+
+.imagecircle
+{
+
+    border-radius: 200px;
+    box-sizing: border-box;
+    background-color: #DDD;
+    border: 5px solid #ffad41;
+}
+
+@media print {
+  .hideme {
+    display: none !important;
+  }
+}

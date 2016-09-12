@@ -8,7 +8,7 @@
 	        // Create connection
 	        $conn = new mysqli($servername, $username, $password,$dbname);
 
-	        $sql = "SELECT * FROM `carts` JOIN `products` ON carts.ProductsID=products.ProductsID WHERE carts.UsersID='$UsersID'";
+	        $sql = "SELECT * FROM `carts` JOIN `products` ON carts.ProductsID=products.ProductsID WHERE carts.UsersID='$UsersID' AND carts.OrderID='0'";
 	        $result = $conn->query($sql);
 	        $TotalAmount = 0;
 	        $TotalItems = 0;
@@ -75,7 +75,7 @@
 			<div class="col-xs-3">
 				<div class="form-group">
 					
-					<button class="col-xs-12 btn btn-primary magicbtn"><i class="fa fa-money" aria-hidden="true"></i> CHECK OUT CART</button>
+					<a href="Payment.php" class="col-xs-12 btn btn-primary magicbtn"><i class="fa fa-money" aria-hidden="true"></i> CHECK OUT CART</a>
 				</div>
 			</div>
 

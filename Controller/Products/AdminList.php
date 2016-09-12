@@ -59,7 +59,12 @@
                <div class="col-md-3">
                     
                     <div><center><img src="<?php echo "../images/uploads/". $row['Image'];?>" alt="thumb01" width="200" height="200"></center></div>
-                    <div><center><strong>MERCHANT : </strong><?php echo $row['UserName']?></center></div>
+                    <div><strong>MERCHANT : </strong><?php echo $row['UserName'];?></div>
+                    <div><strong>NAME</strong> : <?php echo $row['ProductName']; ?></div>
+                    <div><strong>PRICE</strong> : <?php echo $row['ProductPrice']; ?></div>
+                    <div><strong>DETAILS</strong> : <?php echo $row['Details']; ?></div>
+                    <div><strong>CATEGORY</strong> : <?php changeCategory($row['Category']);?></div>
+                    <div><strong>STOCKS</strong> : <?php echo $row['Stocks'];?></div>
                     <div class="row">
                         <div class="col-md-6">
                             <form class="admindecissionyes" method="post" action="../Controller/Products/AcceptProduct.php">
@@ -81,6 +86,13 @@
 
 
       <?php }?>
+
+
+      <?php if($result->num_rows <= 0){ ?>
+
+        <center><h2 style="color:#FE980F;">NO PENDING ITEMS</h2></center>
+
+        <?php }?>
 
 
 
