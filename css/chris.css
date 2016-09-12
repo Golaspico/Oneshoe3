@@ -33,7 +33,7 @@
     border-width: thin;
     border-spacing: 2px;
     border-style: none;
-    border-color: black;
+    border-color: #777;
 
 }
 
@@ -54,3 +54,30 @@ body
     opacity: 1;             
 }
 
+.messenger{
+    left: 50%;
+    top: 50%;
+    transform: translate(-50%, -50%);
+    position: fixed;
+    z-index: 1000;
+    font-size: 100px;
+    color:white;
+    background-color:rgba(0,0,0,0.5);
+}
+
+.listcart{
+    margin-top: 20px;
+    border-style: solid;
+    border-width: 1px;
+    padding:5px;
+    border-color: #777;
+}
+
+.biggerfont{
+    font-size:15px;
+    font-weight: bold;
+}
+
+body{
+    padding-bottom: 30px;
+}

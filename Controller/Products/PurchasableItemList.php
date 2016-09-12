@@ -1,11 +1,17 @@
 <?php
-
+			session_start();
 			$status = "no-status";
 
 			if(isset($_POST['status']))
 			{
 				$status = "index";
 				$productsID = "";
+			}
+
+			if(isset($_POST['mode']))
+			{
+				$mode = $_POST['mode'];
+
 			}
 
 			$servername = "127.0.0.1";
@@ -49,14 +55,21 @@
 	        	}
 	        }
 
-	        $sql = "SELECT * FROM `products` WHERE `Stocks`!='0' AND `Status`!='0'";
+	        if(isset($mode))
+	        {
+	        	$sql = "SELECT * FROM `products` WHERE `Stocks`!='0' AND `Status`!='0' AND `Category`='$mode'";
+	        }else
+	        {
+	        	$sql = "SELECT * FROM `products` WHERE `Stocks`!='0' AND `Status`!='0'";
+	        }
+
 	        $result = $conn->query($sql);
 	        while($row = $result->fetch_assoc())
 	        {?>
 	        	<?php 
 	        		if($status == "no-status")
 	        		{?>
-						<form action="#" method="post">
+						<form action="Controller/Carts/Insert.php" method="post" class="insertCart">
 	        	<?php	}else{?>
 	        			
 	        		<form action="Views/Login.php" method="get" class="indexform">
@@ -79,7 +92,12 @@
 		        		<div><strong>DETAILS</strong> : <?php echo $row['Details']; ?></div>
 		        		<div><strong>CATEGORY</strong> : <?php changeCategory($row['Category']);?></div>
 		        		<div><strong>STOCKS</strong> : <?php echo $row['Stocks'];?></div>
-		        		<input type="hidden" name=""
+		      			
+		        		<input type="hidden" name="ProductsID" value="<?php echo $row['ProductsID'];?>"/>
+		        		<input type="hidden" name="Amount" value="1"/>
+		        		<input type="hidden" name="TotalAmount" value="1"/>
+		        		<input type="hidden" name="OrderID" value="0"/>
+		        		<input type="hidden" name="Price" value="<?php echo $row['ProductPrice'];?>"/>
 
 		        		<div><center><strong>SIZES</strong></center></div>
 		        <div class="btn-group" data-toggle="buttons">
@@ -138,4 +156,6 @@
 	        	</div>
 	        </form>
 	  <?php }
+
 ?>
+

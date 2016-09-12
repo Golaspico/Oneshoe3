@@ -34,7 +34,7 @@
           <span class="icon-bar"></span>
           <span class="icon-bar"></span>
         </button>
-        <a class="navbar-brand" href="index.php"><img src="../images/headerIMG/logo.png" alt=""></a>
+        <a class="navbar-brand" href="../index.php"><img src="../images/headerIMG/logo.png" alt=""></a>
       </div><!-- navbar-header -->
       <div class="collapse navbar-collapse" id="collapse">
 
@@ -177,7 +177,7 @@
                                     <a href="Dashboard2.php" class="btn btn-primary magicbtn col-md-3 col-md-offset1" >BACK</a>
                                 <?php }?>
                                 <?php if($_SESSION['Role'] == 0){?>
-                                    <a href="Dashboard.php" class="btn btn-primary magicbtn col-md-3 col-md-offset-1">BACK</a>
+                                    <a href="../index.php" class="btn btn-primary magicbtn col-md-3 col-md-offset-1">BACK</a>
                                 <?php }?>
                 </div>
             </div>

@@ -309,7 +309,7 @@
          $(document).ready(function(){
 
                 $.post("Controller/Products/PurchasableItemList.php",
-                   
+                   {"mode":"1"},
                     function(response){
                     $("#productListView").html(response);
                     
@@ -331,7 +331,7 @@
                                 console.log(data);
                             //THEN WE RE POPULATE THE PRODUCT LIST AFTER DELETING
                             $.post("Controller/Products/PurchasableItemList.php",
-                                    
+                                    {"mode":"1"},
                                     function(response){
                                      $("#productListView").html(response);
                                      insertCart();
@@ -368,7 +368,7 @@
          $(document).ready(function(){
 
                 $.post("Controller/Products/PurchasableItemList.php",
-                   {"status":"index"},
+                   {"status":"index","mode":"1"},
                     function(response){
                     $("#productListView").html(response);
                     

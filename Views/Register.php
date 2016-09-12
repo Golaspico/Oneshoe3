@@ -57,8 +57,8 @@
             </li>  
 
 
-          <li class="ctmHighlight"><a href="#" class="navTitles">Login</a></li>
-          <li class="ctmHighlight"><a href="#" class="navTitles">Sign Up</a></li>
+          <li class="ctmHighlight"><a href="Login.php" class="navTitles">Login</a></li>
+          <li class="ctmHighlight"><a href="Register.php" class="navTitles">Sign Up</a></li>
           <li class="ctmHighlight"><a href="#" class="navTitles">About Us</a></li>         
         </ul>        
       </div><!-- collapse navbar-collapse -->

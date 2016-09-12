@@ -5,13 +5,13 @@
 
 <!DOCTYPE html>
 <html>
-<head>	
-	<meta charset="UTF-8">
-	<title>SoleSearchPH</title>
-	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
-    <link href='http://fonts.googleapis.com/css?family=Open+Sans+Condensed:300|Playfair+Display:400italic' rel='stylesheet' type='text/css' />	
+<head>  
+    <meta charset="UTF-8">
+    <title>SoleSearchPH</title>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
+    <link href='http://fonts.googleapis.com/css?family=Open+Sans+Condensed:300|Playfair+Display:400italic' rel='stylesheet' type='text/css' />  
     
-	<meta name="viewport" content="width=device-width, initial-scale=1">    
+    <meta name="viewport" content="width=device-width, initial-scale=1">    
     <link href="css/animate.css" rel="stylesheet">
     <link rel="stylesheet" href="css/main.css">
     <link rel="stylesheet" href="css/chris.css">
@@ -309,7 +309,7 @@
          $(document).ready(function(){
 
                 $.post("Controller/Products/PurchasableItemList.php",
-                   
+                   {"mode":"9"},
                     function(response){
                     $("#productListView").html(response);
                     
@@ -331,7 +331,7 @@
                                 console.log(data);
                             //THEN WE RE POPULATE THE PRODUCT LIST AFTER DELETING
                             $.post("Controller/Products/PurchasableItemList.php",
-                                    
+                                    {"mode":"9"},
                                     function(response){
                                      $("#productListView").html(response);
                                      insertCart();
@@ -368,7 +368,7 @@
          $(document).ready(function(){
 
                 $.post("Controller/Products/PurchasableItemList.php",
-                   {"status":"index"},
+                   {"status":"index","mode":"9"},
                     function(response){
                     $("#productListView").html(response);
                     

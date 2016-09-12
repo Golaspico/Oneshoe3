@@ -8,7 +8,7 @@
 	$valSizesID = $_POST['Size'];
 	$valAmount = $_POST['Amount'];
 	$valPrice = $_POST['Price'];
-	$valTotalAmount = $_POST['TotalAmount'];
+	$valTotalAmount = $_POST['Price'];
 	$valOrderID = $_POST['OrderID'];
 	$valColor = $_POST['Color'];
 

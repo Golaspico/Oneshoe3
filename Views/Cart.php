@@ -12,11 +12,11 @@
     <link href='http://fonts.googleapis.com/css?family=Open+Sans+Condensed:300|Playfair+Display:400italic' rel='stylesheet' type='text/css' />	
     
 	<meta name="viewport" content="width=device-width, initial-scale=1">    
-    <link href="css/animate.css" rel="stylesheet">
-    <link rel="stylesheet" href="css/main.css">
-    <link rel="stylesheet" href="css/chris.css">
-    <link rel="stylesheet" href="css/customstyle.css">
-    <link rel="stylesheet" href="css/font-awesome.min.css">
+    <link href="../css/animate.css" rel="stylesheet">
+    <link rel="stylesheet" href="../css/main.css">
+    <link rel="stylesheet" href="../css/chris.css">
+    <link rel="stylesheet" href="../css/customstyle.css">
+    <link rel="stylesheet" href="../css/font-awesome.min.css">
 
 
 <style>
@@ -45,35 +45,15 @@
           <span class="icon-bar"></span>
           <span class="icon-bar"></span>
         </button>
-        <a class="navbar-brand" href="index.php"><img src="../images/headerIMG/logo.png" alt=""></a>
+        <a class="navbar-brand" href="../index.php"><img src="../images/headerIMG/logo.png" alt=""></a>
       </div><!-- navbar-header -->
       <div class="collapse navbar-collapse" id="collapse">
 
         <ul class="nav navbar-nav navbar-right moveDown">
-         <li class="dropdown ctmHighlight"><a href="#" class="navTitles">Men<i class="glyphicon glyphicon-menu-down"></i></a>
-                <ul role="menu" class="sub-menu">
-                    <li><a href="Mleather.php" >Leather</a></li>
-                    <li><a href="MRubbershoes.php">Rubber Shoes</a></li> 
-                    <li><a href="MSlippers.php">Slippers</a></li> 
-                </ul>
-            </li>    
-            <li class="dropdown ctmHighlight"><a href="#" class="navTitles">Women<i class="glyphicon glyphicon-menu-down"></i></a>
-                <ul role="menu" class="sub-menu">
-                    <li><a href="WFlats.php">Flats</a></li>
-                    <li><a href="WHeels.php">Heels</a></li> 
-                    <li><a href="WWedge.php">Wedge</a></li> 
-                </ul>
-            </li>    
-            <li class="dropdown ctmHighlight"><a href="#" class="navTitles">Kids<i class="glyphicon glyphicon-menu-down"></i></a>
-                <ul role="menu" class="sub-menu">
-                    <li><a href="KRubbershoes.php">Rubber Shoes</a></li>
-                    <li><a href="KSlippersB.php">Slippers (Boys) </a></li> 
-                    <li><a href="KFlatsG.php">Flats (Girls) </a></li> 
-                </ul>
-            </li>  
+         
 
             <li class="ctmHighlight">
-                <a href="Views/Cart.php"><i class="fa fa-shopping-cart fa-2x" aria-hidden="true"><span class="badge badge" id="cartcounter" style="background-color:red;"></span></i></a>
+                <a href="#"><i class="fa fa-shopping-cart fa-2x" aria-hidden="true"><span class="badge badge" id="cartcounter" style="background-color:red;"></span></i></a>
             </li>
             <li>
               <div class=""><!--/dropdownmenu-->
@@ -88,15 +68,15 @@
                     <button class="btn btn-primary dropdown-toggle" type="button" data-toggle="dropdown">Account
                                 <span class="caret"></span></button>
                                 <ul class="dropdown-menu" style="left:-70px;">
-                                <li><a href="Views/UserUpdate.php"><i class="fa fa-user"></i>Hi : <?php echo $_SESSION['UserName'];?></a></li>
+                                <li><a href="UserUpdate.php"><i class="fa fa-user"></i>Hi : <?php echo $_SESSION['UserName'];?></a></li>
                                 <?php if($_SESSION['Role'] == 2){?>
-                                    <li><a href="Views/Admin.php"><i class="fa fa-briefcase"></i>Dashboard</a></li>
+                                    <li><a href="Admin.php"><i class="fa fa-briefcase"></i>Dashboard</a></li>
                                 <?php }?>
                                 <?php if($_SESSION['Role'] == 1){?>
-                                    <li><a href="Views/Dashboard2.php"><i class="fa fa-briefcase"></i>Dashboard</a></li>
+                                    <li><a href="Dashboard2.php"><i class="fa fa-briefcase"></i>Dashboard</a></li>
                                 <?php }?>
                                 <?php if($_SESSION['Role'] == 0){?>
-                                    <li><a href="Views/Dashboard.php"><i class="fa fa-briefcase"></i>Dashboard</a></li>
+                                    <li><a href="Dashboard.php"><i class="fa fa-briefcase"></i>Dashboard</a></li>
                                 <?php }?>
                                 <li><a href=""><i class="fa fa-calendar-o"></i>Reports</a></li>
                                 <li><a href="../Controller/Authentication/Logout.php"><i class="fa fa-lock"></i>Logout</a></li>
@@ -169,49 +149,49 @@
   <div id="ei-slider" class="ei-slider">
                     <ul class="ei-slider-large">
                         <li>
-                            <img src="images/headerIMG/large/1.jpg" alt="image01" />
+                            <img src="../images/headerIMG/large/1.jpg" alt="image01" />
                             <div class="ei-title">
                                 <h2>Creative</h2>
                                 <h3>Duet</h3>
                             </div>
                         </li>
                         <li>
-                            <img src="images/headerIMG/large/2.jpg" alt="image02" />
+                            <img src="../images/headerIMG/large/2.jpg" alt="image02" />
                             <div class="ei-title">
                                 <h2>Friendly</h2>
                                 <h3>Girl</h3>
                             </div>
                         </li>
                         <li>
-                            <img src="images/headerIMG/large/3.jpg" alt="image03"/>
+                            <img src="../images/headerIMG/large/3.jpg" alt="image03"/>
                             <div class="ei-title">
                                 <h2>Tranquilent</h2>
                                 <h3>Compatriot</h3>
                             </div>
                         </li>
                         <li>
-                            <img src="images/headerIMG/large/4.jpg" alt="image04"/>
+                            <img src="../images/headerIMG/large/4.jpg" alt="image04"/>
                             <div class="ei-title">
                                 <h2>Insecure</h2>
                                 <h3>Hussler</h3>
                             </div>
                         </li>
                         <li>
-                            <img src="images/headerIMG/large/5.jpg" alt="image05"/>
+                            <img src="../images/headerIMG/large/5.jpg" alt="image05"/>
                             <div class="ei-title">
                                 <h2>Loving</h2>
                                 <h3>Rebel</h3>
                             </div>
                         </li>
                         <li>
-                            <img src="images/headerIMG/large/6.jpg" alt="image06"/>
+                            <img src="../images/headerIMG/large/6.jpg" alt="image06"/>
                             <div class="ei-title">
                                 <h2>Passionate</h2>
                                 <h3>Seeker</h3>
                             </div>
                         </li>
                         <li>
-                            <img src="images/headerIMG/large/7.jpg" alt="image07"/>
+                            <img src="../images/headerIMG/large/7.jpg" alt="image07"/>
                             <div class="ei-title">
                                 <h2>Crazy</h2>
                                 <h3>Friend</h3>
@@ -220,13 +200,13 @@
                     </ul><!-- ei-slider-large -->
                     <ul style="display: block; max-width: 1050px;" class="ei-slider-thumbs">
                         <li class="ei-slider-element" >Current</li>
-                        <li><a href="#">Slide 1</a><img src="images/headerIMG/thumbs/1.jpg" alt="thumb01"></li>
-                        <li><a href="#">Slide 2</a><img src="images/headerIMG/thumbs/2.jpg" alt="thumb02"></li>
-                        <li><a href="#">Slide 3</a><img src="images/headerIMG/thumbs/3.jpg" alt="thumb03"></li>
-                        <li><a href="#">Slide 4</a><img src="images/headerIMG/thumbs/4.jpg" alt="thumb04"></li>
-                        <li><a href="#">Slide 5</a><img src="images/headerIMG/thumbs/5.jpg" alt="thumb05"></li>
-                        <li><a href="#">Slide 6</a><img src="images/headerIMG/thumbs/6.jpg" alt="thumb06"></li>
-                        <li><a href="#">Slide 7</a><img src="images/headerIMG/thumbs/7.jpg" alt="thumb07"></li>
+                        <li><a href="#">Slide 1</a><img src="../images/headerIMG/thumbs/1.jpg" alt="thumb01"></li>
+                        <li><a href="#">Slide 2</a><img src="../images/headerIMG/thumbs/2.jpg" alt="thumb02"></li>
+                        <li><a href="#">Slide 3</a><img src="../images/headerIMG/thumbs/3.jpg" alt="thumb03"></li>
+                        <li><a href="#">Slide 4</a><img src="../images/headerIMG/thumbs/4.jpg" alt="thumb04"></li>
+                        <li><a href="#">Slide 5</a><img src="../images/headerIMG/thumbs/5.jpg" alt="thumb05"></li>
+                        <li><a href="#">Slide 6</a><img src="../images/headerIMG/thumbs/6.jpg" alt="thumb06"></li>
+                        <li><a href="#">Slide 7</a><img src="../images/headerIMG/thumbs/7.jpg" alt="thumb07"></li>
                     </ul><!-- ei-slider-thumbs -->
                 </div>
 </div>    
@@ -236,7 +216,7 @@
 <div class="container">
 
         <div class="productListView" id="productListView"><!-- productListView -->
-        
+           
             
 
     <!--     <div class="paginationWrapper">
@@ -267,9 +247,9 @@
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
 <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous"></script>
 <script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1.7.0/jquery.min.js"></script>
-<script type="text/javascript" src="js/jquery.eislideshow.js"></script>
-<script type="text/javascript" src="js/jquery.easing.1.3.js"></script>
-<script src="js/jquery.form.js"></script>
+<script type="text/javascript" src="../js/jquery.eislideshow.js"></script>
+<script type="text/javascript" src="../js/jquery.easing.1.3.js"></script>
+<script src="../js/jquery.form.js"></script>
 <script type="text/javascript">
             $(function() {
                 $('#ei-slider').eislideshow({
@@ -305,60 +285,103 @@
            
         </script>
 
-        <script>
+        
+     <script>
          $(document).ready(function(){
 
-                $.post("Controller/Products/PurchasableItemList.php",
-                   
+                $.post("../Controller/Carts/List.php",
+                   {"status":"index"},
                     function(response){
                     $("#productListView").html(response);
+                    deleteProduct();
+                    updateProduct();
                     
-                    insertCart();
-
                 });
 
          });
-         </script>
-
-        <script>
-            function insertCart()
-                {
-
-                    $(document).ready(function(){
-                        $(".insertCart").ajaxForm(function(data){
-                            //You need the jquery.form.js to use this
-                                // alert(data);
-                                console.log(data);
-                            //THEN WE RE POPULATE THE PRODUCT LIST AFTER DELETING
-                            $.post("Controller/Products/PurchasableItemList.php",
-                                    
-                                    function(response){
-                                     $("#productListView").html(response);
-                                     insertCart();
-                                     $("#Messenger").fadeIn(1000);
-                                     $("#Messenger").fadeOut(1000);
-                                });
-                            addNotification();
-                            //END OF RE POPULATING WITHOUT REFRESHING.
-                                
-                        });
-
-                    });
-                }
-
-         
-        function addNotification()
+</script>
+    <script>
+        function deleteNotification()
         {
-            var myCurrentValue = 0;
+            $(document).ready(function(){
+                var myCurrentValue;
+
+            if(document.getElementById('numberofnotif') == null){
+                 myCurrentValue = "";
+                 dbRef.child('CartNumber').set("");
+                
+                
+            }else{
+               
+                myCurrentValue = document.getElementById('numberofnotif').value;
+                myCurrentValue-1;
+                if(myCurrentValue <= 0){
+                    myCurrentValue = "";
+                }
+                dbRef.child('CartNumber').set(myCurrentValue);
+            }
             dbRef.on('value',snap => myCurrentValue = snap.val().CartNumber);
            
-            myCurrentValue++;
-            dbRef.child('CartNumber').set(myCurrentValue);
+
+            });
+            
+            
+            
+            
         }
+    </script>
 
-        </script> 
+    <script>
+        function deleteProduct()
+        {
 
-     
+            $(document).ready(function(){
+                $(".DeleteProduct").ajaxForm(function(data){
+                    //You need the jquery.form.js to use this
+                        // alert(data);
+                        console.log(data);
+                    //THEN WE RE POPULATE THE PRODUCT LIST AFTER DELETING
+                    $.post("../Controller/Carts/List.php",
+                            
+                            function(response){
+                            $("#productListView").html(response);
+                             deleteProduct();
+                             updateProduct();
+                             deleteNotification(); 
+                        });
+                    //END OF RE POPULATING WITHOUT REFRESHING.
+                        
+                });
+
+            });
+        }
+    </script>
+
+    <script>
+    function updateProduct()
+    {
+        $(document).ready(function(){
+            $(".UpdateProduct").ajaxForm(function(data){
+                //You need the jquery.form.js to use this
+                    // alert(data);
+                    console.log(data);
+                //THEN WE RE POPULATE THE PRODUCT LIST AFTER DELETING
+                $.post("../Controller/Carts/List.php",
+                        
+                        function(response){
+                        $("#productListView").html(response);
+                         deleteProduct(); 
+                         updateProduct();
+                         
+                    });
+                //END OF RE POPULATING WITHOUT REFRESHING.
+                    
+            });
+
+        });
+    }
+    </script>
+
 
 
     <?php }else{
@@ -367,7 +390,7 @@
  <script>
          $(document).ready(function(){
 
-                $.post("Controller/Products/PurchasableItemList.php",
+                $.post("../Controller/Carts/List.php",
                    {"status":"index"},
                     function(response){
                     $("#productListView").html(response);
@@ -375,7 +398,7 @@
                 });
 
          });
-         </script>
+</script>
 
 <?php }?>
 

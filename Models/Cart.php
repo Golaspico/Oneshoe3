@@ -10,7 +10,7 @@
 	        // Create connection
 	        $conn = new mysqli($servername, $username, $password,$dbname);
 
-	        $sql = "INSERT INTO `carts` (UsersID,ProductsID,SizesID,Amount,Price,TotalAmount,OrderID,Color) VALUES ('$valUsersID','$valProductsID','$valSizesID','$valAmount','$valPrice','$valTotalAmount','$valOrderID',$valColor)";
+	        $sql = "INSERT INTO `carts` (UsersID,ProductsID,SizesID,Amount,Price,TotalAmount,OrderID,Color) VALUES ('$valUsersID','$valProductsID','$valSizesID','$valAmount','$valPrice','$valTotalAmount','$valOrderID','$valColor')";
 	        $conn->query($sql);
 
 	        return "Added to Cart";
@@ -33,7 +33,7 @@
 
 		}
 
-		public function updateCart($valCartsID,$valAmount,$valTotalAmount)
+		public function updateCart($valCartsID,$valAmount,$valPrice,$valTotalAmount)
 		{
 			$servername = "127.0.0.1";
 	        $username = "root";
@@ -41,7 +41,8 @@
 	        $dbname = "oneshoe";
 	        // Create connection
 	        $conn = new mysqli($servername, $username, $password,$dbname);
-
+	        $sql = "UPDATE `carts` SET `Amount`='$valAmount',`Price`='$valPrice',`TotalAmount`='$valTotalAmount' WHERE cartsID='$valCartsID'";
+	        $conn->query($sql);
 	        return "Updated Cart";
 		}
 
