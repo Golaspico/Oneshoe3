@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="WebServers">
+    <option name="servers">
+      <webServer id="7f4670be-bb8c-4a3e-91a3-8b68905c18b4" name="oneshoe" url="http://solesearchph.com">
+        <fileTransfer host="solesearchph.com" port="21" rootFolder="/public_html" password="dffadfcbdfd9dfd9dfdddfc5dfd8dfcedf9bdf8b" username="root@solesearchph.com">
+          <advancedOptions>
+            <advancedOptions dataProtectionLevel="Private" passiveMode="true" />
+          </advancedOptions>
+          <option name="port" value="21" />
+        </fileTransfer>
+      </webServer>
+    </option>
+  </component>
+</project>

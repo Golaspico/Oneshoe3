@@ -40,7 +40,7 @@
                                 
                              <form class="UpdateProduct" action="../Controller/Carts/Update.php" method="post">
                             	<input type="hidden" name="cartsID" value="<?php echo $row['cartsID'];?>"/>
-                            	<input type="number" name="Amount" value="<?php echo $row['Amount'];?>">
+                            	<input type="number"  min="0" name="Amount" value="<?php echo $row['Amount'];?>">
                             	<input type="hidden" name="Price" value="<?php echo $row['ProductPrice'];?>"/>
 
                             	<button type="submit" class="btn btn-primary magicbtn" style="margin-top:0px;">UPDATE</button>

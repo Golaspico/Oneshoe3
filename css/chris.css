@@ -91,6 +91,38 @@ body{
     border: 5px solid #ffad41;
 }
 
+.mysidebar
+{
+    background-color: #FE980F;
+}
+
+.mysidebar li 
+{
+    color:white;
+    padding-top:10px !important;
+    padding-bottom: 10px !important;
+    display:block;
+    list-style: none;
+}
+
+.mysidebar li a
+{
+    color:white !important;
+   
+}
+
+.mysidebar li a:visited
+{
+    color:white !important;
+   
+}
+
+.mysidebar li a:link
+{
+    color:white !important;
+   
+}
+
 @media print {
   .hideme {
     display: none !important;

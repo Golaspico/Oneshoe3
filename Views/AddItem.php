@@ -39,7 +39,7 @@
           <span class="icon-bar"></span>
           <span class="icon-bar"></span>
         </button>
-        <a class="navbar-brand" href="index.php"><img src="../images/headerIMG/logo.png" alt=""></a>
+        <a class="navbar-brand" href="../index.php"><img src="../images/headerIMG/logo.png" alt=""></a>
       </div><!-- navbar-header -->
       <div class="collapse navbar-collapse" id="collapse">
 
@@ -123,7 +123,7 @@
         
         <div class="form-group">
             <label>Price</label>
-            <input type="number" step="any" name="ProductPrice" placeholder="Price" class="loginforms"/>
+            <input type="number" step="any"  min="0" name="ProductPrice" placeholder="Price" class="loginforms"/>
         </div>
         <div class="form-group">
             <label>Kind of Shoe</label>

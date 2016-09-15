@@ -72,9 +72,19 @@
 					<button class="btn btn-primary dropdown-toggle" type="button" data-toggle="dropdown">Account
 								<span class="caret"></span></button>
 								<ul class="dropdown-menu">
-								<li><a href=""><i class="fa fa-user"></i>Hi : <?php echo $_SESSION['UserName'];?></a></li>
-								<li><a href="Dashboard.php"><i class="fa fa-briefcase"></i>Dashboard</a></li>
-								<li><a href=""><i class="fa fa-calendar-o"></i>Reports</a></li>
+								<li><a href="UserUpdate.php"><i class="fa fa-user"></i>Hi : <?php echo $_SESSION['UserName'];?></a></li>
+								 <?php if($_SESSION['Role'] == 2){?>
+                                    <li><a href="Admin.php"><i class="fa fa-briefcase"></i>Pending Items</a></li>
+                                    <li><a href="DashboardAdmin.php"><i class="fa fa-briefcase"></i>Dashboard</a></li>
+                                    <li><a href="Transaction.php"><i class="fa fa-calendar-o"></i>Transaction</a></li>
+                                <?php }?>
+                                <?php if($_SESSION['Role'] == 1){?>
+                                    <li><a href="Dashboard2.php"><i class="fa fa-briefcase"></i>Dashboard</a></li>
+                                <?php }?>
+                                <?php if($_SESSION['Role'] == 0){?>
+                                    <li><a href="Dashboard.php"><i class="fa fa-briefcase"></i>Dashboard</a></li>
+                                <?php }?>
+								
 								<li><a href="../Controller/Authentication/Logout.php"><i class="fa fa-lock"></i>Logout</a></li>
 								</ul>
 
@@ -134,11 +144,11 @@
 	        		</div>	
 	        		<div class="form-group">
 	        			<label>Product Price</label>
-	        			<input type="text" name="ProductPrice" value="<?php echo $row['ProductPrice']; ?>" placeholder="Product Price" class=" loginforms"/>
+	        			<input type="text" name="ProductPrice" id="ProductPrice" min="0" value="<?php echo $row['ProductPrice']; ?>" placeholder="Product Price" class=" loginforms"/>
 	        		</div>
 	        		<div class="form-group">
 	        			<label>Stocks</label>
-	        			<input type="text" name="Stocks" value="<?php echo $row['Stocks']; ?>" placeholder="Product Price" class=" loginforms"/>
+	        			<input type="text" min="0" name="Stocks" id="Stocks" value="<?php echo $row['Stocks']; ?>" placeholder="Product Price" class=" loginforms"/>
 	        		</div>		
 	        		<div class="form-group">
 	        			<label>Details</label>
@@ -219,7 +229,17 @@ function updateProduct()
 				// alert(data);
 				console.log(data);
 			//THEN WE RE POPULATE THE PRODUCT LIST AFTER DELETING
-			
+			if($("#ProductPrice").val() <= 0 || $("#Stocks").val() <= 0){
+				$("#resultMessage").html("Stock and Price Cannot be lower than 0");
+				$("#resultMessage").fadeIn(1000);
+            	$("#resultMessage").fadeOut(1000);
+            	return false;
+			}
+
+
+
+
+
 			       $.post("../Controller/Products/Update.php",
             $(".UpdateProduct").serialize()
             ,function(response){
@@ -229,6 +249,7 @@ function updateProduct()
 			         $.post("../Controller/Products/UpdateSingleDiv.php",
             $(".UpdateProduct").serialize()
             ,function(response){
+            	$("#resultMessage").html("Item Updated");
             	$("#resultMessage").fadeIn(1000);
             	$("#resultMessage").fadeOut(1000);
             updateProduct();
@@ -237,6 +258,7 @@ function updateProduct()
 			//END OF RE POPULATING WITHOUT REFRESHING.
 			return false;
 		});
+
 
 	});
 }

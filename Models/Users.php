@@ -128,7 +128,7 @@
 			return "Updated Role";
 		}
 
-		public function deleteUser($valUsername){
+		public function deleteUser($valUsersID){
 
 			$servername = "127.0.0.1";
 	        $username = "root";
@@ -138,14 +138,14 @@
 	        $conn = new mysqli($servername, $username, $password,$dbname);
 
 	        // if(isset($valPassword) && isset($valAddress) && isset($valEmail) && isset($valEmail) && isset($valFullname) && isset($valPRole)){
-	        	$sql = "DELETE FROM `users` WHERE UserName='$valUsername'";
+	        	$sql = "DELETE FROM `users` WHERE UsersID='$valUsersID'";
 	        // }
 
 	      
 			
 			$result = $conn->query($sql);
 			
-			return "Deleted $valUsername";
+			return "Deleted $valUsersID";
 		}
 
 		public function insertUser($valUsername,$valPassword,$valAddress,$valEmail,$valFullname,$valRole)

@@ -34,7 +34,13 @@
           <span class="icon-bar"></span>
           <span class="icon-bar"></span>
         </button>
-        <a class="navbar-brand" href="../index.php"><img src="../images/headerIMG/logo.png" alt=""></a>
+        <?php if($_SESSION['Role'] == 2){?>
+        <a class="navbar-brand" href="Admin.php"><img src="../images/headerIMG/logo.png" alt=""></a>
+        <?php }else if ($_SESSION['Role'] == 1){?>
+        <a class="navbar-brand" href="Dashboard2.php"><img src="../images/headerIMG/logo.png" alt=""></a>    
+        <?php }else{ ?>
+        <a class="navbar-brand" href="../index.php"><img src="../images/headerIMG/logo.png" alt=""></a>  
+        <?php }?>    
       </div><!-- navbar-header -->
       <div class="collapse navbar-collapse" id="collapse">
 
@@ -74,16 +80,17 @@
 								<span class="caret"></span></button>
 								<ul class="dropdown-menu">
 								<li><a href=""><i class="fa fa-user"></i>Hi : <?php echo $_SESSION['UserName'];?></a></li>
-                                <?php if($_SESSION['Role'] == 2){?>
-								    <li><a href="Admin.php"><i class="fa fa-briefcase"></i>Dashboard</a></li>
+                                <?php if($_SESSION['Role'] == 2){?> 
+								    <li><a href="Admin.php"><i class="fa fa-briefcase"></i>Pending Items</a></li>
+                                    <li><a href="DashboardAdmin.php"><i class="fa fa-briefcase"></i>Dashboard</a></li>
+                                    <li><a href="Transaction.php"><i class="fa fa-calendar-o"></i>Transaction</a></li>
                                 <?php }?>
                                 <?php if($_SESSION['Role'] == 1){?>
-                                    <li><a href="Dashboard2.php"><i class="fa fa-briefcase"></i>Dashboard</a></li>
+                                    <li><a href="Dashboard2.php"><i class="fa fa-briefcase"></i>Inventory</a></li>
+                                    <li><a href="DashboardMerchant.php"><i class="fa fa-briefcase"></i>Dashboard</a></li>
                                 <?php }?>
-                                <?php if($_SESSION['Role'] == 0){?>
-                                    <li><a href="Dashboard.php"><i class="fa fa-briefcase"></i>Dashboard</a></li>
-                                <?php }?>
-								<li><a href=""><i class="fa fa-calendar-o"></i>Reports</a></li>
+                                
+								
 								<li><a href="../Controller/Authentication/Logout.php"><i class="fa fa-lock"></i>Logout</a></li>
 								</ul>
 

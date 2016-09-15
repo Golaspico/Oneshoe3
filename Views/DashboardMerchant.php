@@ -33,7 +33,7 @@
           <span class="icon-bar"></span>
           <span class="icon-bar"></span>
         </button>
-        <a class="navbar-brand" href="Admin.php"><img src="../images/headerIMG/logo.png" alt=""></a>
+        <a class="navbar-brand" href="DashBoard2.php"><img src="../images/headerIMG/logo.png" alt=""></a>
       </div><!-- navbar-header -->
       <div class="collapse navbar-collapse" id="collapse">
 
@@ -79,7 +79,8 @@
                                     <li><a href="Transaction.php"><i class="fa fa-calendar-o"></i>Transaction</a></li>
                                 <?php }?>
                                 <?php if($_SESSION['Role'] == 1){?>
-                                    <li><a href="Dashboard2.php"><i class="fa fa-briefcase"></i>Dashboard</a></li>
+                                    <li><a href="Dashboard2.php"><i class="fa fa-briefcase"></i>Inventory</a></li>
+                                    <li><a href="DashboardMerchant.php"><i class="fa fa-briefcase"></i>Dashboard</a></li>
                                 <?php }?>
                                 <?php if($_SESSION['Role'] == 0){?>
                                     <li><a href="Dashboard.php"><i class="fa fa-briefcase"></i>Dashboard</a></li>
@@ -113,8 +114,17 @@
 <div class="productListView"><!-- productListView -->
     <div class="container">
         
-        <div class="row" id="productList" style="margin-top:10%;">
-            
+        <div class="row hideme"  style="margin-top:10%;">
+            <div class="col-xs-2">
+                <ul class="mysidebar">
+                    <li><a href="#" id="customer">CUSTOMER</a></li>
+                    <li><a href="#" id="orders">ORDERS</a></li>
+                    <li><a href="#" id="products">PRODUCTS</a></li>
+                </ul>
+            </div>
+            <div class="col-xs-10">
+                <div id="productList"></div>
+            </div>
             
 
 
@@ -122,29 +132,35 @@
         </div>
 
 
+       
+
+
     </div>
 
- <!--    <div class="paginationWrapper">
-        <div class="text-center">
-    <ul class="pagination">
-        <li><a href="#" aria-label="Previous"><span aria-hidden="true">«</span></a></li> 
-            <li><a href="#">1</a></li> 
-            <li><a href="#">2</a></li> 
-            <li><a href="#">3</a></li>
-            <li><a href="#">4</a></li> 
-            <li><a href="#">5</a></li> 
-            <li><a href="#" aria-label="Next"><span aria-hidden="true">»</span></a>
-    </ul>
-    </div> 
-        
-    </div>  -->
 
     
 
 </div><!-- end of productListView -->
 
 
-
+<!-- Modal -->
+<div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span class="hideme" aria-hidden="true">&times;</span></button>
+        <h4 class="modal-title" id="myModalLabel">MERCHANT REPORT</h4>
+      </div>
+      <div class="modal-body" id="ReportModal">
+        
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-primary hideme" onclick="print()">PRINT</button>
+        <button type="button" class="btn btn-primary hideme" data-dismiss="modal">CLOSE</button>
+      </div>
+    </div>
+  </div>
+</div>
 
        
 
@@ -152,9 +168,10 @@
 
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
 <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous"></script>
-<script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1.7.0/jquery.min.js"></script>
+
 <script type="text/javascript" src="../js/jquery.eislideshow.js"></script>
 <script type="text/javascript" src="../js/jquery.easing.1.3.js"></script>
+
 <script src="../js/jquery.form.js"></script>
 <script>
   $(document).ready(function(){
@@ -165,20 +182,84 @@
         
 
         //After Inserting Repopulate the Product List
-        $.post("../Controller/Products/AdminList.php",
+        $.post("../Controller/Dashboard/MerchantCustomerList.php",
                 
                 function(response){
                 $("#productList").html(response);
-                    deleteProduct();
-                     updateProduct();
+                    
             });
             //End of Repopulating
+
+         $("#customer").on('click',function(){
+            $.post("../Controller/Dashboard/MerchantCustomerList.php",
+                
+                function(response){
+                $("#productList").html(response);
+                    
+            });
+
+         });
+
+         $("#products").on('click',function(){
+            $.post("../Controller/Dashboard/MerchantProductsList.php",
+                
+                function(response){
+                $("#productList").html(response);
+                    
+            });
+            
+         });
+
+         $("#orders").on('click',function(){
+            $.post("../Controller/Dashboard/MerchantOrderList.php",
+                
+                function(response){
+                $("#productList").html(response);
+                    
+            });
+            
+         });
+   
    
 
     
   });
 </script>
 
+<script>
+// 	  $.post("../Controller/Dashboard/CustomerList.php",
+                    
+//                     function(response){
+//                     $("#productList").html(response);
+                     
+                     
+//                 });
+
+// 	  $.post("../Controller/Dashboard/MerchantList.php",
+                    
+//                     function(response){
+//                     $("#productList2").html(response);
+//                     reports();
+                     
+//                 });
+
+// function reports(){
+// 	 $(document).ready(function(){
+// 	  		$(".reports").ajaxForm(function(data){
+// 	  			$("#ReportModal").html(data);
+// 	  			$('#myModal').modal('show');
+// 	  		});
+
+
+// 	  });
+
+// }
+	 
+
+	  // $('#myModal').modal('toggle');
+	  
+</script>
+	
 <script>
 function deleteProduct()
 {
@@ -189,12 +270,11 @@ function deleteProduct()
                 // alert(data);
                 console.log(data);
             //THEN WE RE POPULATE THE PRODUCT LIST AFTER DELETING
-            $.post("../Controller/Products/AdminList.php",
+            $.post("../Controller/Dashboard/CustomerList.php",
                     
                     function(response){
                     $("#productList").html(response);
-                     deleteProduct();
-                     updateProduct();
+                     
                      
                 });
             //END OF RE POPULATING WITHOUT REFRESHING.

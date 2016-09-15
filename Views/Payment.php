@@ -1,3 +1,6 @@
+<?php
+  session_start();
+?>
 <!DOCTYPE html>
 <html>
 <head>	
@@ -43,30 +46,60 @@
         <ul class="nav navbar-nav navbar-right moveDown">
             <li class="dropdown ctmHighlight"><a href="#" class="navTitles">Men<i class="glyphicon glyphicon-menu-down"></i></a>
                 <ul role="menu" class="sub-menu">
-                    <li><a href="Mleather.php" >Leather</a></li>
-                    <li><a href="MRubbershoes.php">Rubber Shoes</a></li> 
-                    <li><a href="MSlippers.php">Slippers</a></li> 
+                    <li><a href="../Mleather.php" >Leather</a></li>
+                    <li><a href="../MRubbershoes.php">Rubber Shoes</a></li> 
+                    <li><a href="../MSlippers.php">Slippers</a></li> 
                 </ul>
             </li>    
             <li class="dropdown ctmHighlight"><a href="#" class="navTitles">Women<i class="glyphicon glyphicon-menu-down"></i></a>
                 <ul role="menu" class="sub-menu">
-                    <li><a href="WFlats.php">Flats</a></li>
-                    <li><a href="WHeels.php">Heels</a></li> 
-                    <li><a href="WWedge.php">Wedge</a></li> 
+                    <li><a href="../WFlats.php">Flats</a></li>
+                    <li><a href="../WHeels.php">Heels</a></li> 
+                    <li><a href="../WWedge.php">Wedge</a></li> 
                 </ul>
             </li>    
             <li class="dropdown ctmHighlight"><a href="#" class="navTitles">Kids<i class="glyphicon glyphicon-menu-down"></i></a>
                 <ul role="menu" class="sub-menu">
-                    <li><a href="KRubbershoes.php">Rubber Shoes</a></li>
-                    <li><a href="KSlippersB.php">Slippers (Boys) </a></li> 
-                    <li><a href="KFlatsG.php">Flats (Girls) </a></li> 
+                    <li><a href="../KRubbershoes.php">Rubber Shoes</a></li>
+                    <li><a href="../KSlippersB.php">Slippers (Boys) </a></li> 
+                    <li><a href="../KFlatsG.php">Flats (Girls) </a></li> 
                 </ul>
             </li>  
 
 
-          <li class="ctmHighlight"><a href="#" class="navTitles">Login</a></li>
-          <li class="ctmHighlight"><a href="Register.php" class="navTitles">Sign Up</a></li>
-          <li class="ctmHighlight"><a href="#" class="navTitles">About Us</a></li>         
+           <li>
+              <div class=""><!--/dropdownmenu-->
+                    
+                        <div class="shop-menu pull-right">
+                        <div class="dropdown">
+
+                            
+    
+
+    
+                    <button class="btn btn-primary dropdown-toggle" type="button" data-toggle="dropdown">Account
+                                <span class="caret"></span></button>
+                                <ul class="dropdown-menu" style="left:-70px;">
+                                <li><a href="UserUpdate.php"><i class="fa fa-user"></i>Hi : <?php echo $_SESSION['UserName'];?></a></li>
+                                <?php if($_SESSION['Role'] == 2){?>
+                                    <li><a href="Admin.php"><i class="fa fa-briefcase"></i>Dashboard</a></li>
+                                    <li><a href=""><i class="fa fa-calendar-o"></i>Reports</a></li>
+                                <?php }?>
+                                <?php if($_SESSION['Role'] == 1){?>
+                                    <li><a href="Dashboard2.php"><i class="fa fa-briefcase"></i>Dashboard</a></li>
+                                    <li><a href=""><i class="fa fa-calendar-o"></i>Reports</a></li>
+                                <?php }?>
+                                <?php if($_SESSION['Role'] == 0){?>
+                                    
+                                <?php }?>
+                                
+                                <li><a href="../Controller/Authentication/Logout.php"><i class="fa fa-lock"></i>Logout</a></li>
+                                </ul>
+
+                                </div><!--/dropdownmenu-->      
+                        </div>
+                    </div>
+            </li>    
         </ul>        
       </div><!-- collapse navbar-collapse -->
     </div><!-- container -->
@@ -159,8 +192,30 @@
               </div>
               <div class="panel-body">
                   <div class="form-group">
-                      <input type="text" class="loginforms" placeholder="FULL NAME"/>
-                      <input type="text" class="loginforms" placeholder="SHIPPING ADDRESS"/>
+                      <h4 id="statusmessage" style="display:none;">FULL NAME AND SHIPPING ADDRESS IS REQUIRED</h4>
+                      <input type="text" id="fullname" class="loginforms" placeholder="FULL NAME"/>
+                      <input type="text" id="address" class="loginforms" placeholder="SHIPPING ADDRESS"/>
+                      <select name="City" required="required">
+                        <option disabled="disabled" selected="selected">CHOOSE CITY</option>
+                        <option value="Caloocan">Caloocan</option>
+                        <option value="Valenzuela">Valenzuela</option>
+                        <option value="Navotas">Navotas</option>
+                        <option value="Malabon">Malabon</option>
+                        <option value="Manila">Manila</option>
+                        <option value="Pasay">Pasay</option>
+                        <option value="Paranaque">Paranaque</option>
+                        <option value="Las Pinas">Las Pinas</option>
+                        <option value="Quezon">Quezon</option>
+                        <option value="Marikina">Marikina</option>
+                        <option value="San Juan">San Juan</option>
+                        <option value="Pasig">Pasig</option>
+                        <option value="Pateros">Pateros</option>
+                        <option value="Makati">Makati</option>
+                        <option value="Taguig">Taguig</option>
+                        <option value="MuntiLupa">MuntiLupa</option>
+                        
+
+                      </select>
                   </div>
                   <div class="col-xs-12">
                   <blockquote>
@@ -300,8 +355,15 @@
   $(document).ready(function(){
       $("#shippingform").fadeIn(1000);  
       $("#next").on('click',function(){
-          $("#shippingform").fadeOut(1000);  
-          $("#orderform").fadeIn(1000);
+          if($("#fullname").val() != "" && $("#address").val() != "")
+          {
+            $("#shippingform").fadeOut(1000);  
+            $("#orderform").fadeIn(1000);
+          }else{
+            $("#statusmessage").fadeIn(1000);
+            $("#statusmessage").fadeOut(1000);
+          }
+          
       });
   });
 

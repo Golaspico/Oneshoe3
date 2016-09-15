@@ -369,6 +369,23 @@
 
         </script> 
 
+        <script>
+$(document).ready(function(){
+       $("#SearchForm").on('input',function(){
+        var mySearch = $("#Search").val();
+        $.post("Controller/Products/PurchasableItemList.php",
+                   {"Search" : mySearch},
+                    function(response){
+                    $("#productListView").html(response);
+                    
+                });
+
+        return false;
+       });
+
+    });
+</script>
+
      
 
 

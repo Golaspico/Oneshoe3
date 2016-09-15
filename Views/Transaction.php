@@ -9,7 +9,7 @@
 
 	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
     <link href='http://fonts.googleapis.com/css?family=Open+Sans+Condensed:300|Playfair+Display:400italic' rel='stylesheet' type='text/css' />	
-    <link href="https://fonts.googleapis.com/css?family=Open+Sans" rel="stylesheet">
+    
 	<meta name="viewport" content="width=device-width, initial-scale=1">    
     <link href="../css/animate.css" rel="stylesheet">
     
@@ -33,7 +33,13 @@
           <span class="icon-bar"></span>
           <span class="icon-bar"></span>
         </button>
-        <a class="navbar-brand" href="index.php"><img src="../images/headerIMG/logo.png" alt=""></a>
+        <?php if($_SESSION['Role'] == 2){?>
+        <a class="navbar-brand" href="Admin.php"><img src="../images/headerIMG/logo.png" alt=""></a>
+        <?php }else if ($_SESSION['Role'] == 1){?>
+        <a class="navbar-brand" href="Dashboard2.php"><img src="../images/headerIMG/logo.png" alt=""></a>    
+        <?php }else{ ?>
+        <a class="navbar-brand" href="../index.php"><img src="../images/headerIMG/logo.png" alt=""></a>  
+        <?php }?>  
       </div><!-- navbar-header -->
       <div class="collapse navbar-collapse" id="collapse">
 
@@ -59,13 +65,10 @@
                     <li><a href="KFlatsG.php">Flats (Girls) </a></li> 
                 </ul>
             </li>   -->
-            <li class="ctmHighlight">
-                <a href="#"><i class="fa fa-shopping-cart fa-2x" aria-hidden="true"><span class="badge badge" id="cartcounter"></span></i></a>
-            </li>
             <li>
               <div class="col-sm-8"><!--/dropdownmenu-->
 					
-						<div class="shop-menu">
+						<div class="shop-menu pull-right">
 						<div class="dropdown">
 
 							
@@ -74,12 +77,20 @@
 	
 					<button class="btn btn-primary dropdown-toggle" type="button" data-toggle="dropdown">Account
 								<span class="caret"></span></button>
-								<ul class="dropdown-menu" style="left:-70px;">
-								<li><a href=""><i class="fa fa-user"></i>Hi : <?php echo $_SESSION['UserName'];?></a></li>
-								<!-- <li><a href="../index.php"><i class="fa fa-briefcase"></i>Dashboard</a></li> -->
-                                <?php if($_SESSION['Role'] == 2){?>
-								    <li><a href=""><i class="fa fa-calendar-o"></i>Reports</a></li>
-                                <?php } ?>
+								<ul class="dropdown-menu">
+								<li><a href="UserUpdate.php"><i class="fa fa-user"></i>Hi : <?php echo $_SESSION['UserName'];?></a></li>
+								 <?php if($_SESSION['Role'] == 2){?>
+                                    <li><a href="Admin.php"><i class="fa fa-briefcase"></i>Pending Items</a></li>
+                                    <li><a href="DashboardAdmin.php"><i class="fa fa-briefcase"></i>Dashboard</a></li>
+                                    <li><a href="#"><i class="fa fa-calendar-o"></i>Transaction</a></li>
+                                <?php }?>
+                                <?php if($_SESSION['Role'] == 1){?>
+                                    <li><a href="Dashboard2.php"><i class="fa fa-briefcase"></i>Dashboard</a></li>
+                                <?php }?>
+                                <?php if($_SESSION['Role'] == 0){?>
+                                    <li><a href="Dashboard.php"><i class="fa fa-briefcase"></i>Dashboard</a></li>
+                                <?php }?>
+								
 								<li><a href="../Controller/Authentication/Logout.php"><i class="fa fa-lock"></i>Logout</a></li>
 								</ul>
 
@@ -108,7 +119,7 @@
 <div class="productListView"><!-- productListView -->
     <div class="container">
         
-        <div class="row" id="productList" style="margin-top:10%;">
+        <div class="row hideme" id="productList" style="margin-top:10%;">
             
             
 
@@ -117,29 +128,35 @@
         </div>
 
 
+      
+
+
     </div>
 
-  <!--   <div class="paginationWrapper">
-        <div class="text-center">
-    <ul class="pagination">
-        <li><a href="#" aria-label="Previous"><span aria-hidden="true">«</span></a></li> 
-            <li><a href="#">1</a></li> 
-            <li><a href="#">2</a></li> 
-            <li><a href="#">3</a></li>
-            <li><a href="#">4</a></li> 
-            <li><a href="#">5</a></li> 
-            <li><a href="#" aria-label="Next"><span aria-hidden="true">»</span></a>
-    </ul>
-    </div> 
-        
-    </div>  -->
 
     
 
 </div><!-- end of productListView -->
 
 
-
+<!-- Modal -->
+<div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span class="hideme" aria-hidden="true">&times;</span></button>
+        <h4 class="modal-title" id="myModalLabel">TRANSACTION REPORT</h4>
+      </div>
+      <div class="modal-body" id="ReportModal">
+        
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-primary hideme" onclick="print()">PRINT</button>
+        <button type="button" class="btn btn-primary hideme" data-dismiss="modal">CLOSE</button>
+      </div>
+    </div>
+  </div>
+</div>
 
        
 
@@ -147,11 +164,12 @@
 
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
 <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous"></script>
-<script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1.7.0/jquery.min.js"></script>
+
 <script type="text/javascript" src="../js/jquery.eislideshow.js"></script>
 <script type="text/javascript" src="../js/jquery.easing.1.3.js"></script>
+
 <script src="../js/jquery.form.js"></script>
-<script>
+<!-- <script>
   $(document).ready(function(){
 
     
@@ -160,19 +178,96 @@
         
 
         //After Inserting Repopulate the Product List
-        $.post("../Controller/Products/PurchasableItemList.php",
+        $.post("../Controller/Products/AdminList.php",
                 
                 function(response){
                 $("#productList").html(response);
-              
+                    deleteProduct();
+                     updateProduct();
             });
             //End of Repopulating
    
 
     
   });
+</script> -->
+
+<script>
+	  $.post("../Controller/Transaction/TransactionList.php",
+                    
+                    function(response){
+                    $("#productList").html(response);
+                     reports();
+                     
+                });
+
+	
+
+function reports(){
+	 $(document).ready(function(){
+	  		$(".reports").ajaxForm(function(data){
+	  			$("#ReportModal").html(data);
+	  			$('#myModal').modal('show');
+	  		});
+
+
+	  });
+
+}
+	 
+
+	  // $('#myModal').modal('toggle');
+	  
+</script>
+	
+<script>
+function deleteProduct()
+{
+
+    $(document).ready(function(){
+        $(".admindecissionno").ajaxForm(function(data){
+            //You need the jquery.form.js to use this
+                // alert(data);
+                console.log(data);
+            //THEN WE RE POPULATE THE PRODUCT LIST AFTER DELETING
+            $.post("../Controller/Dashboard/CustomerList.php",
+                    
+                    function(response){
+                    $("#productList").html(response);
+                     
+                     
+                });
+            //END OF RE POPULATING WITHOUT REFRESHING.
+                
+        });
+
+    });
+}
 </script>
 
+<script>
+function updateProduct()
+{
+    $(document).ready(function(){
+        $(".admindecissionyes").ajaxForm(function(data){
+            //You need the jquery.form.js to use this
+                // alert(data);
+                console.log(data);
+            //THEN WE RE POPULATE THE PRODUCT LIST AFTER DELETING
+            $.post("../Controller/Products/AdminList.php",
+                    
+                    function(response){
+                    $("#productList").html(response);
+                     deleteProduct(); 
+                     updateProduct();
+                });
+            //END OF RE POPULATING WITHOUT REFRESHING.
+                
+        });
+
+    });
+}
+</script>
    
 </body>
 </html>
